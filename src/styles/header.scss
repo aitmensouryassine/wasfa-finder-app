@@ -1,0 +1,61 @@
+@import './variables';
+
+header {
+  background-color: $primary-color;
+  height: $header-height-large;
+  @include flex-hv-space-between-center;
+
+  .logo {
+    img {
+      height: 60px;
+    }
+  }
+
+  nav {
+    height: 100%;
+
+    display: flex;
+
+    a {
+      @include flex-hv-center;
+
+      height: 100%;
+      padding: 0 1rem;
+
+      text-decoration: none;
+      color: $nav-link-color;
+      font-size: 1.1rem;
+
+      &:hover,
+      &.active {
+        background-color: #ffffff;
+        color: $nav-link-color-active;
+      }
+      i {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 700px) {
+    height: $header-height-small;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    nav {
+      a {
+        font-size: 1.3rem;
+        flex-direction: column;
+        i {
+          padding: 0 1rem;
+          margin-right: 0;
+        }
+        span {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+}

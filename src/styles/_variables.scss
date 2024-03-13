@@ -1,0 +1,21 @@
+// COLORS
+$primary-color: #f97b22;
+$nav-link-color: #fff6e0;
+$nav-link-color-active: #aa8b56;
+
+// DIMENSIONS
+$header-height-large: 70px;
+$header-height-small: 60px;
+
+// mixins
+@mixin flex-hv-space-between-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-hv-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
