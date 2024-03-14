@@ -1,8 +1,33 @@
 @import './normalize';
 @import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css');
+@import './variables';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
 html {
   font-family: Quicksand, sans-serif;
-  font-size: 16px;
+  font-size: 18px;
+
+  @media (max-width: $medium) {
+    font-size: 16px;
+  }
+
+  @media (max-width: $small) {
+    font-size: 15px;
+  }
+
+  @media (max-width: $xsmall) {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 700px) {
+  section {
+    padding-bottom: $header-height-small;
+  }
 }

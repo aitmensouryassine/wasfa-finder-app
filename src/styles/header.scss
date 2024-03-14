@@ -5,12 +5,6 @@ header {
   height: $header-height-large;
   @include flex-hv-space-between-center;
 
-  .logo {
-    img {
-      height: 60px;
-    }
-  }
-
   nav {
     height: 100%;
 
@@ -37,19 +31,25 @@ header {
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: $small) {
     height: $header-height-small;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
 
+    .logo {
+      img {
+        height: 40px;
+      }
+    }
+
     nav {
       a {
         font-size: 1.3rem;
         flex-direction: column;
         i {
-          padding: 0 1rem;
+          padding: 0 0.5rem;
           margin-right: 0;
         }
         span {

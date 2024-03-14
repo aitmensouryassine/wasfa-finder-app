@@ -1,3 +1,8 @@
+// devices
+$xsmall: 400px;
+$small: 700px;
+$medium: 1200px;
+
 // COLORS
 $primary-color: #f97b22;
 $nav-link-color: #fff6e0;
@@ -5,7 +10,7 @@ $nav-link-color-active: #aa8b56;
 
 // DIMENSIONS
 $header-height-large: 70px;
-$header-height-small: 60px;
+$header-height-small: 50px;
 
 // mixins
 @mixin flex-hv-space-between-center {
