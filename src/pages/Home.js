@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { mealType as getMealType } from '../utils';
 import Cover from '../components/Cover';
 import Recipes from '../components/Recipes';
+import Loading from '../components/Loading';
 import { getRecipesByMealType } from '../api';
 import '../styles/home.scss';
 
@@ -15,7 +16,6 @@ export default function Home() {
     () => async () => {
       try {
         const data = await getRecipesByMealType();
-        console.log(data.hits);
         setRecipes(data.hits);
         setLoading(false);
       } catch (err) {
@@ -33,7 +33,7 @@ export default function Home() {
   return (
     <section className='Home'>
       <Cover mealType={mealType} />
-      <Recipes recipes={recipes} />
+      {loading ? <Loading /> : <Recipes recipes={recipes} />}
     </section>
   );
 }
