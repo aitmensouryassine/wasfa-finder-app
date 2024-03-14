@@ -2,59 +2,57 @@
 
 header {
   background-color: $primary-color;
-  height: $header-height-large;
+  height: $header-height-mobile;
   @include flex-hv-space-between-center;
 
   nav {
     height: 100%;
-
     display: flex;
-
     a {
-      @include flex-hv-center;
-
-      height: 100%;
-      padding: 0 1rem;
-
-      text-decoration: none;
       color: $nav-link-color;
-      font-size: 1.1rem;
+      height: 100%;
+      @include flex-hv-center;
+      font-size: 1.3rem;
+      flex-direction: column;
+      text-decoration: none;
+      padding: 0 0.5rem;
+      i {
+        padding: 0 0.5rem;
+        margin-right: 0;
+      }
+      span {
+        font-size: 0.8rem;
+      }
 
       &:hover,
       &.active {
         background-color: #ffffff;
         color: $nav-link-color-active;
       }
-      i {
-        margin-right: 0.5rem;
-      }
+    }
+  }
+  .logo {
+    padding-left: 0.5rem;
+    img {
+      height: 40px;
     }
   }
 
-  @media (max-width: $small) {
-    height: $header-height-small;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
+  @include tablet {
+    height: $header-height-tablet;
     .logo {
+      padding-left: 1rem;
       img {
-        height: 40px;
+        height: 50px;
       }
     }
-
+  }
+  @include desktop {
+    height: $header-height-desktop;
     nav {
       a {
-        font-size: 1.3rem;
-        flex-direction: column;
-        i {
-          padding: 0 0.5rem;
-          margin-right: 0;
-        }
-        span {
-          font-size: 0.8rem;
-        }
+        font-size: 1rem;
+        flex-direction: row;
       }
     }
   }

@@ -1,7 +1,14 @@
-// devices
-$xsmall: 400px;
-$small: 700px;
-$medium: 1200px;
+// media queries
+@mixin tablet {
+  @media (min-width: 500px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
 
 // COLORS
 $primary-color: #f97b22;
@@ -9,14 +16,21 @@ $nav-link-color: #fff6e0;
 $nav-link-color-active: #aa8b56;
 
 // DIMENSIONS
-$header-height-large: 70px;
-$header-height-small: 50px;
+$header-height-desktop: 70px;
+$header-height-tablet: 60px;
+$header-height-mobile: 50px;
 
 // mixins
 @mixin flex-hv-space-between-center {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@mixin flex-hv-space-around-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 @mixin flex-hv-center {

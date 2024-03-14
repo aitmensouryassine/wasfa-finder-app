@@ -11,23 +11,17 @@
 
 html {
   font-family: Quicksand, sans-serif;
-  font-size: 18px;
+  font-size: 14px;
 
-  @media (max-width: $medium) {
+  @include tablet {
     font-size: 16px;
   }
-
-  @media (max-width: $small) {
-    font-size: 15px;
-  }
-
-  @media (max-width: $xsmall) {
-    font-size: 14px;
+  @include desktop {
+    font-size: 18px;
   }
 }
 
-@media (max-width: 700px) {
-  section {
-    padding-bottom: $header-height-small;
-  }
+.App {
+  max-width: 1200px;
+  margin: 0 auto;
 }
