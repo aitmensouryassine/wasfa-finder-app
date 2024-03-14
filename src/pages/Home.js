@@ -8,7 +8,7 @@ import '../styles/home.scss';
 
 export default function Home() {
   const [mealType, setMealType] = useState(getMealType());
-  const [recipes, setRecipes] = useState([]);
+  const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [dependency, setDependency] = useState(0);
 
@@ -16,7 +16,7 @@ export default function Home() {
     () => async () => {
       try {
         const data = await getRecipesByMealType();
-        setRecipes(data.hits);
+        setData(data);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -26,14 +26,13 @@ export default function Home() {
   );
 
   useEffect(() => {
-    console.log(mealType);
     fetchRecipes();
   }, [fetchRecipes]);
 
   return (
     <section className='Home'>
       <Cover mealType={mealType} />
-      {loading ? <Loading /> : <Recipes recipes={recipes} />}
+      {loading ? <Loading /> : <Recipes data={data} />}
     </section>
   );
 }
