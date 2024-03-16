@@ -6,6 +6,7 @@ import Error from './pages/Error';
 import Saved from './pages/Saved';
 import Search from './pages/Search';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ContextProvider } from './context';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ContextProvider>
+      <RouterProvider router={router} />
+    </ContextProvider>
   </React.StrictMode>
 );
