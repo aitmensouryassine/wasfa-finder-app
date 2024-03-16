@@ -5,13 +5,16 @@ import { useEffect, useState } from 'react';
 
 function RecipeCard({ recipe }) {
   const [hoverSave, setHoverSave] = useState(false);
-  const saveRecipe = (recipe) => {
+  const saveRecipe = (evt) => {
+    evt.preventDefault();
     console.log(recipe);
   };
 
-  const handleSave = (evt) => {
-    evt.preventDefault();
-    saveRecipe(recipe);
+  const healthLabels = () => {
+    if (recipe.healthLabels.length >= 2) {
+      return `${recipe.healthLabels.slice(0, 2).join(', ')} ...`;
+    }
+    return recipe.healthLabels[0];
   };
 
   const save_icon = <i className='bi bi-bookmark save-icon'></i>;
@@ -28,13 +31,13 @@ function RecipeCard({ recipe }) {
       </div>
       <div className='label'>
         <h4>{recipe.label}</h4>
-        <small>{recipe.healthLabels.slice(0, 2).join(', ')} ...</small>
+        <small>{healthLabels()}</small>
       </div>
       <div className='footer'>
         <div className='source'>By {recipe.source}</div>
         <div
           className='save'
-          onClick={handleSave}
+          onClick={saveRecipe}
           onMouseEnter={() => setHoverSave(true)}
           onMouseLeave={() => setHoverSave(false)}
         >
