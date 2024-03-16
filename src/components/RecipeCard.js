@@ -1,7 +1,7 @@
 import '../styles/recipe-card.scss';
 import { Link } from 'react-router-dom';
 import { getRecipeId } from '../utils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function RecipeCard({ recipe }) {
   const [hoverSave, setHoverSave] = useState(false);
@@ -14,13 +14,13 @@ function RecipeCard({ recipe }) {
     saveRecipe(recipe);
   };
 
-  const save_icon = <i class='bi bi-bookmark save-icon'></i>;
-  const saved_icon = <i class='bi bi-bookmark-fill saved-icon'></i>;
+  const save_icon = <i className='bi bi-bookmark save-icon'></i>;
+  const saved_icon = <i className='bi bi-bookmark-fill saved-icon'></i>;
 
   return (
     <Link className='RecipeCard' to={`/recipes/${getRecipeId(recipe.uri)}`}>
       <div className='thumbnail'>
-        <img alt={recipe.label} src={recipe.image} loading='lazy' />
+        <RecipeCardThumbnail alt={recipe.label} src={recipe.image} />
         <div className='tags'>
           <div className='cal'>{Math.round(recipe.calories)} Cal</div>
           <div className='cuisine-type'>{recipe.cuisineType[0]}</div>
@@ -43,6 +43,22 @@ function RecipeCard({ recipe }) {
       </div>
     </Link>
   );
+}
+
+function RecipeCardThumbnail({ src, alt }) {
+  const [image, setImage] = useState(false);
+  const [loadingImage, setLoadingImage] = useState('');
+
+  useEffect(() => {
+    setLoadingImage(require(`../images/load-image-${Math.round(Math.random()) + 1}.png`));
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      setImage(src);
+    };
+  }, []);
+
+  return <img alt={alt} src={image || loadingImage} loading='lazy' />;
 }
 
 export default RecipeCard;
