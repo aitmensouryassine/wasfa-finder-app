@@ -13,3 +13,8 @@ export const mealType = () => {
   else if (time >= 17 && time <= 20) return DINNER;
   else return SNACK;
 };
+
+export const getRecipeId = (uri) => {
+  const search_word = 'recipe_';
+  return uri.substring(uri.indexOf(search_word) + search_word.length);
+};
