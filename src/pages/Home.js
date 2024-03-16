@@ -1,38 +1,40 @@
-import { useEffect, useMemo, useState } from 'react';
-import { mealType as getMealType } from '../utils';
+import { useEffect, useState } from 'react';
 import Cover from '../components/Cover';
+import { mealType } from '../utils';
 import Recipes from '../components/Recipes';
-import Loading from '../components/Loading';
 import { getRecipesByMealType } from '../api';
 import '../styles/home.scss';
+import Loading from '../components/Loading';
 
 export default function Home() {
-  const [mealType, setMealType] = useState(getMealType());
-  const [data, setData] = useState({});
+  const [recipes, setRecipes] = useState([]);
+  const [nextRecipesUrl, setNextRecipesUrl] = useState('');
   const [loading, setLoading] = useState(true);
-  const [dependency, setDependency] = useState(0);
 
-  const fetchRecipes = useMemo(
-    () => async () => {
-      try {
-        const data = await getRecipesByMealType();
-        setData(data);
-        setLoading(false);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-    [dependency]
-  );
+  const fetchRecipes = async () => {
+    const data = await getRecipesByMealType();
+    setRecipes(data.recipes);
+    setNextRecipesUrl(data.nextRecipesUrl);
+    setLoading(false);
+  };
 
   useEffect(() => {
     fetchRecipes();
-  }, [fetchRecipes]);
+  }, []);
 
   return (
     <section className='Home'>
-      <Cover mealType={mealType} />
-      {loading ? <Loading /> : <Recipes data={data} />}
+      <Cover mealType={mealType()} />
+      {loading ? (
+        <Loading />
+      ) : (
+        <Recipes
+          recipes={recipes}
+          setRecipes={setRecipes}
+          nextRecipesUrl={nextRecipesUrl}
+          setNextRecipesUrl={setNextRecipesUrl}
+        />
+      )}
     </section>
   );
 }

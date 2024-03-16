@@ -4,9 +4,7 @@ import '../styles/recipes.scss';
 import { useEffect, useRef, useState } from 'react';
 import { getNextRecipes } from '../api';
 
-function Recipes({ data }) {
-  const [nextUrl, setNextUrl] = useState(data._links.next.href);
-  const [recipes, setRecipes] = useState(data.hits);
+function Recipes({ recipes, setRecipes, nextRecipesUrl, setNextRecipesUrl }) {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const loaderRef = useRef(null);
@@ -15,7 +13,7 @@ function Recipes({ data }) {
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
       if (target.isIntersecting) {
-        getNextRecipes(nextUrl, setRecipes, setNextUrl, setLoading, setHasMore);
+        getNextRecipes(nextRecipesUrl, setRecipes, setNextRecipesUrl, setLoading, setHasMore);
       }
     });
     if (loaderRef.current) {
@@ -36,7 +34,13 @@ function Recipes({ data }) {
       ) : (
         <div>No recipes</div>
       )}
-      {hasMore ? <div ref={loaderRef}>{loading ? <Loading /> : null}</div> : <div>No more recipes</div>}
+      {nextRecipesUrl ? (
+        hasMore ? (
+          <div ref={loaderRef}>{loading ? <Loading /> : null}</div>
+        ) : (
+          <div>No more recipes</div>
+        )
+      ) : null}
     </div>
   );
 }
