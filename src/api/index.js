@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mealType } from '../utils';
+import { mealType, mergeDuplicateRecipes } from '../utils';
 
 export const api_key = '446aa5a2b7ad7f4594f12336c100a887';
 export const app_id = '3cec3aee';
@@ -15,7 +15,7 @@ export const getNextRecipes = async (nextUrl, setRecipes, setNextUrl, setLoading
     setLoading(true);
     const response = await axios.get(nextUrl);
     const { data } = response;
-    setRecipes((prevRecipes) => prevRecipes.concat(data.hits));
+    setRecipes((prevRecipes) => mergeDuplicateRecipes(prevRecipes, data.hits));
     setNextUrl(data._links.next.href);
     setLoading(false);
   } catch (err) {

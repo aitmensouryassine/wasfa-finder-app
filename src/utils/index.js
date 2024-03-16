@@ -18,3 +18,22 @@ export const getRecipeId = (uri) => {
   const search_word = 'recipe_';
   return uri.substring(uri.indexOf(search_word) + search_word.length);
 };
+
+export const mergeDuplicateRecipes = (arr1, arr2) => {
+  let mergedMap = new Map();
+
+  // Add elements from arr1 to mergedMap
+  arr1.forEach((obj) => {
+    mergedMap.set(obj.recipe.uri, obj);
+  });
+
+  // Add elements from arr2 to mergedMap, overriding duplicates
+  arr2.forEach((obj) => {
+    mergedMap.set(obj.recipe.uri, obj);
+  });
+
+  // Convert mergedMap back to an array
+  let mergedArray = Array.from(mergedMap.values());
+
+  return mergedArray;
+};
