@@ -1,14 +1,34 @@
 import '../styles/recipe-card.scss';
 import { Link } from 'react-router-dom';
 import { getRecipeId } from '../utils';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import context from '../context';
+
+const save_icon = <i className='bi bi-bookmark save-icon'></i>;
+const saved_icon = <i className='bi bi-bookmark-fill saved-icon'></i>;
 
 function RecipeCard({ recipe }) {
-  const [hoverSave, setHoverSave] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [icon, setIcon] = useState(save_icon);
+  const { savedRecipes, setSavedRecipes } = useContext(context);
+
   const saveRecipe = (evt) => {
     evt.preventDefault();
-    console.log(recipe);
+
+    if (isSaved) {
+      setSavedRecipes((prevSavedRecipes) =>
+        prevSavedRecipes.filter(({ recipe: savedRecipe }) => savedRecipe.uri !== recipe.uri)
+      );
+      setIsSaved(false);
+    } else {
+      setSavedRecipes((prevSavedRecipes) => [...prevSavedRecipes, { recipe }]);
+      setIsSaved(true);
+    }
   };
+
+  useEffect(() => {
+    setIsSaved(savedRecipes.some(({ recipe: savedRecipe }) => savedRecipe.uri === recipe.uri));
+  }, []);
 
   const healthLabels = () => {
     if (recipe.healthLabels.length >= 2) {
@@ -16,9 +36,6 @@ function RecipeCard({ recipe }) {
     }
     return recipe.healthLabels[0];
   };
-
-  const save_icon = <i className='bi bi-bookmark save-icon'></i>;
-  const saved_icon = <i className='bi bi-bookmark-fill saved-icon'></i>;
 
   return (
     <Link className='RecipeCard' to={`/recipes/${getRecipeId(recipe.uri)}`}>
@@ -38,10 +55,10 @@ function RecipeCard({ recipe }) {
         <div
           className='save'
           onClick={saveRecipe}
-          onMouseEnter={() => setHoverSave(true)}
-          onMouseLeave={() => setHoverSave(false)}
+          onMouseEnter={() => setIcon(saved_icon)}
+          onMouseLeave={() => setIcon(save_icon)}
         >
-          {hoverSave ? saved_icon : save_icon}
+          {isSaved ? saved_icon : icon}
         </div>
       </div>
     </Link>
