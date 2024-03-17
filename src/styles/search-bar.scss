@@ -11,6 +11,7 @@
 }
 
 .search-msg {
+  font-size: 1.25rem;
   margin-bottom: 1rem;
   padding-top: 4rem;
   font-weight: bold;
@@ -18,8 +19,8 @@
 }
 
 .search-msg2 {
+  font-size: 1.15rem;
   font-weight: bold;
-  font-size: 2rem;
   color: #469b4c;
 }
 
@@ -32,7 +33,7 @@
 
 
   input {
-    width: 30rem;
+    width: 15rem;
     padding: 0.5rem;
     border: 0.06rem solid #ccc;
     border-radius: 0.25rem;
@@ -61,7 +62,7 @@
 
   .searchbar {
     input {
-      width: 25rem;
+      width: 15rem;
     }
   }
 }
