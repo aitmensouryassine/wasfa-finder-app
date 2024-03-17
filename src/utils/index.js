@@ -37,3 +37,20 @@ export const mergeDuplicateRecipes = (arr1, arr2) => {
 
   return mergedArray;
 };
+
+export const secondsToHoursMinutes = (seconds) => {
+  if (seconds < 180) {
+    return seconds + 'min';
+  }
+  // Calculate hours and minutes
+  let hours = Math.floor(seconds / 3600);
+  let remainingSeconds = seconds % 3600;
+  let minutes = Math.floor(remainingSeconds / 60);
+
+  // Format the result
+  const zero = minutes < 10 ? '0' : '';
+  hours = hours ? hours + 'h ' : '';
+  minutes = zero + minutes + 'min';
+
+  return hours + minutes;
+};

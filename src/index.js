@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Error from './pages/Error';
 import Saved from './pages/Saved';
 import Search from './pages/Search';
+import Recipe from './pages/Recipe';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { ContextProvider } from './context';
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/saved',
         element: <Saved />,
+      },
+      {
+        path: '/recipe/:id',
+        element: <Recipe />,
       },
     ],
   },
