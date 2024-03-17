@@ -19,6 +19,7 @@ export default function Search() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     fetchRecipes();
   };
 
