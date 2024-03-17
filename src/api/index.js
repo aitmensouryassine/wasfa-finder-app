@@ -34,3 +34,20 @@ export const getNextRecipes = async (nextUrl, setRecipes, setNextUrl, setLoading
     console.error(err);
   }
 };
+
+export const getRecipesByQuery = async (term) => {
+  try {
+    console.log(baseUrl + '&q=' + term)
+    const { data } = await axios.get(baseUrl + '&q=' + term);
+    return {
+      recipes: data?.hits || [],
+      nextRecipesUrl: data?._links?.next?.href || '',
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      recipes: [],
+      nextRecipesUrl: '',
+    };
+  }
+};
