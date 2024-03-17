@@ -14,7 +14,6 @@
   margin-bottom: 1rem;
   padding-top: 4rem;
   font-weight: bold;
-  font-size: 2.5rem;
   color: #469b4c;
 }
 
@@ -48,5 +47,37 @@
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
+  }
+}
+
+@include tablet {
+  .search-msg {
+    font-size: 2rem;
+  }
+
+  .search-msg2 {
+    font-size: 1.5rem;
+  }
+
+  .searchbar {
+    input {
+      width: 25rem;
+    }
+  }
+}
+
+@include desktop {
+  .search-msg {
+    font-size: 2.5rem;
+  }
+
+  .search-msg2 {
+    font-size: 2rem;
+  }
+
+  .searchbar {
+    input {
+      width: 30rem;
+    }
   }
 }
