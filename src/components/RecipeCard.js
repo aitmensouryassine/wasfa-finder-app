@@ -38,9 +38,9 @@ function RecipeCard({ recipe }) {
   };
 
   return (
-    <Link className='RecipeCard' to={`/recipes/${getRecipeId(recipe.uri)}`}>
+    <Link className='RecipeCard' to={`/recipe/${getRecipeId(recipe.uri)}`}>
       <div className='thumbnail'>
-        <RecipeCardThumbnail alt={recipe.label} src={recipe.image} />
+        <Thumbnail alt={recipe.label} src={recipe.image} />
         <div className='tags'>
           <div className='cal'>{Math.round(recipe.calories)} Cal</div>
           <div className='cuisine-type'>{recipe.cuisineType[0]}</div>
@@ -65,7 +65,7 @@ function RecipeCard({ recipe }) {
   );
 }
 
-function RecipeCardThumbnail({ src, alt }) {
+export function Thumbnail({ src, alt }) {
   const [image, setImage] = useState(false);
   const [loadingImage, setLoadingImage] = useState('');
 
