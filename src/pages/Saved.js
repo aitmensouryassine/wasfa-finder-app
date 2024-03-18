@@ -3,11 +3,11 @@ import Recipes from '../components/Recipes';
 import context from '../context';
 
 export default function Saved() {
-  const { savedRecipes } = useContext(context);
+  const { saved } = useContext(context);
 
   return (
     <section className='Saved'>
-      <Recipes recipes={savedRecipes} />
+      <Recipes recipes={saved.savedRecipes} />
     </section>
   );
 }

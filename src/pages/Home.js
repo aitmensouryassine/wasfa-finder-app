@@ -1,31 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import Cover from '../components/Cover';
 import { mealType } from '../utils';
 import Recipes from '../components/Recipes';
-import { getRecipesByMealType } from '../api';
 import '../styles/home.scss';
 import Loading from '../components/Loading';
+import context from '../context';
 
 export default function Home() {
-  const [recipes, setRecipes] = useState([]);
-  const [nextRecipesUrl, setNextRecipesUrl] = useState('');
-  const [loading, setLoading] = useState(true);
-
-  const fetchRecipes = async () => {
-    const data = await getRecipesByMealType();
-    setRecipes(data.recipes);
-    setNextRecipesUrl(data.nextRecipesUrl);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+  const { home } = useContext(context);
+  const {
+    homeRecipes: recipes,
+    setHomeRecipes: setRecipes,
+    homeNextRecipesUrl: nextRecipesUrl,
+    setHomeNextRecipesUrl: setNextRecipesUrl,
+    homeRecipesLoading,
+  } = home;
 
   return (
     <section className='Home'>
       <Cover mealType={mealType()} />
-      {loading ? (
+      {homeRecipesLoading ? (
         <Loading />
       ) : (
         <Recipes

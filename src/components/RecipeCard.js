@@ -10,7 +10,9 @@ const saved_icon = <i className='bi bi-bookmark-fill saved-icon'></i>;
 function RecipeCard({ recipe }) {
   const [isSaved, setIsSaved] = useState(false);
   const [icon, setIcon] = useState(save_icon);
-  const { savedRecipes, setSavedRecipes } = useContext(context);
+
+  const { saved } = useContext(context);
+  const { savedRecipes, setSavedRecipes } = saved;
 
   const saveRecipe = (evt) => {
     evt.preventDefault();
@@ -28,7 +30,7 @@ function RecipeCard({ recipe }) {
 
   useEffect(() => {
     setIsSaved(savedRecipes.some(({ recipe: savedRecipe }) => savedRecipe.uri === recipe.uri));
-  }, []);
+  }, [recipe, savedRecipes]);
 
   const healthLabels = () => {
     if (recipe.healthLabels.length >= 2) {
@@ -76,7 +78,7 @@ export function Thumbnail({ src, alt }) {
     img.onload = () => {
       setImage(src);
     };
-  }, []);
+  }, [src]);
 
   return <img alt={alt} src={image || loadingImage} loading='lazy' />;
 }
