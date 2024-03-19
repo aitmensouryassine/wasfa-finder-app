@@ -8,6 +8,7 @@ header {
   nav {
     height: 100%;
     display: flex;
+
     a {
       color: $nav-link-color;
       height: 100%;
@@ -16,10 +17,12 @@ header {
       flex-direction: column;
       text-decoration: none;
       padding: 0 0.5rem;
+
       i {
         padding: 0 0.5rem;
         margin-right: 0;
       }
+
       span {
         font-size: 0.8rem;
       }
@@ -31,24 +34,40 @@ header {
       }
     }
   }
+
   .logo {
-    padding-left: 0.5rem;
+    padding-left: 0.25rem;
+
     img {
       height: 40px;
     }
   }
 
+  .mode-toggle {
+    padding-right: 0.25rem;
+    cursor: pointer;
+  }
+
+
   @include tablet {
     height: $header-height-tablet;
+
     .logo {
       padding-left: 1rem;
+
       img {
         height: 50px;
       }
     }
+
+    .mode-toggle {
+      padding-right: 1rem;
+    }
   }
+
   @include desktop {
     height: $header-height-desktop;
+
     nav {
       a {
         font-size: 1rem;

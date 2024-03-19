@@ -32,13 +32,20 @@ export function ContextProvider({ children }) {
     setSearchRecipesLoading(false);
   };
 
+  //Mode
+  const [mode, setMode] = useState('light');
+
   useEffect(() => {
     fetchHomeRecipes();
   }, []);
 
   return (
     <context.Provider
-      value={{
+      value={ {
+        modeObj: {
+          mode,
+          setMode,
+        },
         saved: {
           savedRecipes,
           setSavedRecipes,
@@ -59,9 +66,9 @@ export function ContextProvider({ children }) {
           setSearchNextRecipesUrl,
           searchRecipesLoading,
         },
-      }}
+      } }
     >
-      {children}
+      { children }
     </context.Provider>
   );
 }
