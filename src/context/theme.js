@@ -3,18 +3,18 @@ import { createContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState('');
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     const isSystemThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (isSystemThemeDark) {
-      setTheme('dark');
+      setDark(true);
     } else {
-      setTheme('light');
+      setDark(false);
     }
   }, []);
 
-  return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ dark, setDark }}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeContext;

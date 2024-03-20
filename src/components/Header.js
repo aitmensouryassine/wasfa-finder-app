@@ -1,13 +1,18 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import logo from '../images/logo-dark.png';
+import logoDark from '../images/logo-dark.svg';
+import logoLight from '../images/logo-light.svg';
+import ThemeContext from '../context/theme';
 import '../styles/header.scss';
 
 function Header() {
+  const { dark } = useContext(ThemeContext);
+
   return (
     <header>
       <div className='logo'>
         <Link to='/'>
-          <img alt='Wasfa finder logo' src={logo} />
+          <img alt='Wasfa finder logo' src={dark ? logoDark : logoLight} />
         </Link>
       </div>
       <nav>
