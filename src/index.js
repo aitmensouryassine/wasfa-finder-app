@@ -8,6 +8,7 @@ import Search from './pages/Search';
 import Recipe from './pages/Recipe';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RecipeProvider } from './context/recipe';
+import { ThemeProvider } from './context/theme';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +39,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RecipeProvider>
-      <RouterProvider router={router} />
-    </RecipeProvider>
+    <ThemeProvider>
+      <RecipeProvider>
+        <RouterProvider router={router} />
+      </RecipeProvider>
+    </ThemeProvider>
   </React.StrictMode>
 );
