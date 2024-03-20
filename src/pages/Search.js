@@ -2,12 +2,12 @@ import SearchBar from '../components/SearchBar';
 import { useContext, useState } from 'react';
 import Loading from '../components/Loading';
 import Recipes from '../components/Recipes';
-import context from '../context';
+import RecipeContext from '../context/recipe';
 
 export default function Search() {
   const [term, setTerm] = useState('');
 
-  const { search } = useContext(context);
+  const { search } = useContext(RecipeContext);
   const {
     fetchSearchRecipes,
     searchRecipes: recipes,

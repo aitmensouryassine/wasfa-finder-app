@@ -7,7 +7,7 @@ import Saved from './pages/Saved';
 import Search from './pages/Search';
 import Recipe from './pages/Recipe';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { ContextProvider } from './context';
+import { RecipeProvider } from './context/recipe';
 
 const router = createBrowserRouter([
   {
@@ -38,8 +38,8 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ContextProvider>
+    <RecipeProvider>
       <RouterProvider router={router} />
-    </ContextProvider>
+    </RecipeProvider>
   </React.StrictMode>
 );

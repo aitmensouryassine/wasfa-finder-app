@@ -4,10 +4,10 @@ import { mealType } from '../utils';
 import Recipes from '../components/Recipes';
 import '../styles/home.scss';
 import Loading from '../components/Loading';
-import context from '../context';
+import RecipeContext from '../context/recipe';
 
 export default function Home() {
-  const { home } = useContext(context);
+  const { home } = useContext(RecipeContext);
   const {
     homeRecipes: recipes,
     setHomeRecipes: setRecipes,

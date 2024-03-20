@@ -1,16 +1,16 @@
 import { createContext, useEffect, useState } from 'react';
 import { getRecipesByMealType, getRecipesByQuery } from '../api';
 
-const context = createContext();
+const RecipeContext = createContext();
 
-export function ContextProvider({ children }) {
+export function RecipeProvider({ children }) {
   // saved recipes
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   // Home recipes
   const [homeRecipes, setHomeRecipes] = useState([]);
   const [homeNextRecipesUrl, setHomeNextRecipesUrl] = useState('');
-  const [homeRecipesLoading, setHomeRecipesLoading] = useState(false);
+  const [homeRecipesLoading, setHomeRecipesLoading] = useState(true);
 
   const fetchHomeRecipes = async () => {
     const data = await getRecipesByMealType();
@@ -37,7 +37,7 @@ export function ContextProvider({ children }) {
   }, []);
 
   return (
-    <context.Provider
+    <RecipeContext.Provider
       value={{
         saved: {
           savedRecipes,
@@ -62,8 +62,8 @@ export function ContextProvider({ children }) {
       }}
     >
       {children}
-    </context.Provider>
+    </RecipeContext.Provider>
   );
 }
 
-export default context;
+export default RecipeContext;
