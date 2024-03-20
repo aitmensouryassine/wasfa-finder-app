@@ -1,6 +1,6 @@
 // media queries
 @mixin tablet {
-  @media (min-width: 500px) {
+  @media (min-width: 600px) {
     @content;
   }
 }
@@ -17,9 +17,7 @@ $nav-link-color-active: #aa8b56;
 $card-border-color: #d5d5d5;
 
 // DIMENSIONS
-$header-height-desktop: 70px;
-$header-height-tablet: 60px;
-$header-height-mobile: 50px;
+$header-height: 55px;
 
 // mixins
 @mixin flex-hv-space-between-center {
