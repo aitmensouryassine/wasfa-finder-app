@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRecipeById } from '../api';
 import { secondsToHoursMinutes } from '../utils';
@@ -10,9 +10,7 @@ function Recipe() {
   const [nutrients, setNutrients] = useState([]);
   const { id } = useParams();
 
-  console.log(recipe);
-
-  const fetchRecipe = async () => {
+  const fetchRecipe = useCallback(async () => {
     const { recipe } = await getRecipeById(id);
 
     // nutrients
@@ -41,11 +39,11 @@ function Recipe() {
     ]);
 
     setRecipe(recipe);
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchRecipe();
-  }, [id]);
+  }, [fetchRecipe]);
 
   return recipe?.label ? (
     <div className='Recipe'>

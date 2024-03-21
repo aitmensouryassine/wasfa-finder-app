@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import '../styles/menu-button.scss';
 
 function MenuButton({ hide, setHide }) {

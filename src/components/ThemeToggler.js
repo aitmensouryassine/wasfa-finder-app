@@ -9,7 +9,7 @@ function ThemeToggler() {
 
   useEffect(() => {
     setChecked(!dark);
-  }, []);
+  }, [dark]);
 
   const handleChange = () => {
     setChecked((prevChecked) => !prevChecked);
