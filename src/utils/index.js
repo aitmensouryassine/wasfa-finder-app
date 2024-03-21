@@ -7,7 +7,7 @@ export const DINNER = 'Dinner'; /* 6pm to 8pm */
 export const mealType = () => {
   const time = new Date().getHours();
 
-  if (time <= 9) return BREAKFAST;
+  if (time >= 6 && time <= 9) return BREAKFAST;
   else if (time >= 12 && time <= 14) return LUNCH;
   else if (time >= 15 && time <= 16) return TEATIME;
   else if (time >= 17 && time <= 20) return DINNER;
