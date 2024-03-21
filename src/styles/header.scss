@@ -18,7 +18,7 @@ header {
     left: 0;
     transition: left 0.3s ease-in-out;
     z-index: 1;
-    background-color: var(--main-bg-color);
+    background-color: var(--header-bg-color);
     width: 100%;
     height: auto;
     padding: 2rem;
@@ -26,12 +26,14 @@ header {
     display: flex;
     flex-direction: column;
     a {
-      color: var(--nav-link-color);
+      color: var(--logo-color);
+      border-left: 4px solid var(--header-bg-color);
       height: 100%;
-      margin: 0.1rem;
-      padding: 1rem 0.5rem;
+      margin: 0.5rem;
+      padding: 0.5rem 0.5rem;
       text-decoration: none;
-      @include flex-hv-center;
+      display: flex;
+      align-items: center;
 
       i {
         font-size: 1.4rem;
@@ -41,8 +43,7 @@ header {
 
       &:hover,
       &.active {
-        background-color: var(--primary-text);
-        color: var(--nav-link-color-active);
+        border-left: 4px solid var(--logo-color);
       }
       &.active > i.bi-house,
       &.active > i.bi-bookmark {
@@ -89,6 +90,7 @@ header {
       @include flex-hv-center;
       flex-direction: row;
       a {
+        border-left: none;
         height: 100%;
         margin: 0 0.5rem;
         padding: 0 1rem;
@@ -101,6 +103,7 @@ header {
           margin-right: 0;
         }
         &:hover {
+          border-left: none;
           background-color: var(--border-color);
           color: var(--secondary-text);
         }
@@ -120,6 +123,7 @@ header {
           transform: scale(1);
         }
         &.active {
+          border-left: none;
           box-sizing: border-box;
           background-color: transparent;
           color: var(--logo-color);
