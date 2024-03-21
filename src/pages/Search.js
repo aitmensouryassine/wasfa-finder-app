@@ -1,11 +1,10 @@
 import SearchBar from '../components/SearchBar';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Loading from '../components/Loading';
 import Recipes from '../components/Recipes';
 import context from '../context';
 
 export default function Search() {
-  const [term, setTerm] = useState('');
 
   const { search } = useContext(context);
   const {
@@ -15,26 +14,55 @@ export default function Search() {
     searchNextRecipesUrl: nextRecipesUrl,
     setSearchNextRecipesUrl: setNextRecipesUrl,
     searchRecipesLoading: loading,
+    newIngredient,
+    setNewIngredient,
+    ingredients,
+    setIngredients,
+    ingredientInput,
   } = search;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (term) fetchSearchRecipes(term);
+    if (ingredients.length !== 0) {
+      fetchSearchRecipes(ingredients.join(', '));
+      setIngredients([]);
+    }
+  };
+
+  const handleAdd = (e) => {
+    e.preventDefault();
+
+    const ingred = newIngredient.trim();
+
+    if (ingred && !ingredients.includes(ingred)) {
+      setIngredients(prevIngredients => [...prevIngredients, ingred]);
+    }
+
+    setNewIngredient('');
+    ingredientInput.current.focus();
   };
 
   return (
     <section className='Search'>
-      <SearchBar setTerm={setTerm} handleSubmit={handleSubmit} />
-      {loading ? (
+      <SearchBar
+        handleSubmit={ handleSubmit }
+        newIngredient={ newIngredient }
+        setNewIngredient={ setNewIngredient }
+        ingredientInput={ ingredientInput }
+        handleAdd={ handleAdd }
+        ingredients={ ingredients }
+        setIngredients={ setIngredients }
+      />
+      { loading ? (
         <Loading />
       ) : (
         <Recipes
-          recipes={recipes}
-          setRecipes={setRecipes}
-          nextRecipesUrl={nextRecipesUrl}
-          setNextRecipesUrl={setNextRecipesUrl}
+          recipes={ recipes }
+          setRecipes={ setRecipes }
+          nextRecipesUrl={ nextRecipesUrl }
+          setNextRecipesUrl={ setNextRecipesUrl }
         />
-      )}
+      ) }
     </section>
   );
 }

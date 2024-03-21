@@ -11,7 +11,7 @@
 }
 
 .search-msg {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   margin-bottom: 1rem;
   padding-top: 4rem;
   font-weight: bold;
@@ -29,7 +29,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 0 3rem 0;
+  padding: 2rem 0 1rem 0;
 
 
   input {
@@ -51,6 +51,39 @@
   }
 }
 
+.ingredients-list-container {
+  margin-bottom: 1rem;
+  max-width: 20rem;
+  white-space: wrap;
+}
+
+.ingredients-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ingredients-list li {
+  display: inline-block;
+  border: 0.25rem solid #469b4c;
+  margin-right: 0.5rem;
+  margin-bottom: 0.25rem;
+  padding: 0.25rem;
+  background-color: #469b4c;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.deletebtn {
+  margin-left: 5px;
+  cursor: pointer;
+  padding: 0 3px;
+  border: none;
+  font-weight: bold;
+  background-color: #469b4c;
+  color: white;
+}
+
+
 @include tablet {
   .search-msg {
     font-size: 2rem;
@@ -62,8 +95,12 @@
 
   .searchbar {
     input {
-      width: 15rem;
+      width: 20rem;
     }
+  }
+
+  .ingredients-list-container {
+    max-width: 25rem;
   }
 }
 
@@ -80,5 +117,9 @@
     input {
       width: 30rem;
     }
+  }
+
+  .ingredients-list-container {
+    max-width: 35rem;
   }
 }
