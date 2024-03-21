@@ -17,11 +17,13 @@ function ThemeToggler() {
   };
 
   return (
-    <div className='theme-toggler'>
-      <label>
-        <input type='checkbox' checked={checked} onChange={handleChange} />
-        <span className='slider'></span>
-      </label>
+    <div className='theme-toggler-container'>
+      <div className='theme-toggler'>
+        <label>
+          <input type='checkbox' checked={checked} onChange={handleChange} />
+          <span className='slider'></span>
+        </label>
+      </div>
     </div>
   );
 }

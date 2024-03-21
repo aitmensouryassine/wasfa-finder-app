@@ -1,58 +1,65 @@
 @use 'variables' as *;
 
-.theme-toggler {
-  --light: #d8dbe0;
-  --dark: #28292c;
+.theme-toggler-container {
+  min-width: $logo-width;
+  height: $header-height;
+  @include flex-hv-center;
+  justify-content: end;
 
-  position: relative;
-  height: 30px;
-  width: 55px;
+  .theme-toggler {
+    --light: #d8dbe0;
+    --dark: #28292c;
 
-  transform: scale(0.8);
+    position: relative;
+    height: 30px;
+    width: 55px;
 
-  label {
-    border: 1px solid var(--logo-color);
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: var(--dark);
-    border-radius: 50px;
-    cursor: pointer;
-  }
+    transform: scale(0.8);
 
-  input {
-    position: absolute;
-    display: none;
-  }
+    label {
+      border: 1px solid var(--logo-color);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--dark);
+      border-radius: 50px;
+      cursor: pointer;
+    }
 
-  .slider {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50px;
-    transition: 0.3s;
-  }
+    input {
+      position: absolute;
+      display: none;
+    }
 
-  input:checked ~ .slider {
-    background-color: var(--light);
-  }
+    .slider {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50px;
+      transition: 0.3s;
+    }
 
-  .slider::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 4px;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    box-shadow: inset 10px -4px 0px 0px var(--light);
-    background-color: var(--dark);
-    transition: 0.3s;
-  }
+    input:checked ~ .slider {
+      background-color: var(--light);
+    }
 
-  input:checked ~ .slider::before {
-    transform: translateX(20px);
-    background-color: var(--dark);
-    box-shadow: none;
+    .slider::before {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 4px;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      box-shadow: inset 10px -4px 0px 0px var(--light);
+      background-color: var(--dark);
+      transition: 0.3s;
+    }
+
+    input:checked ~ .slider::before {
+      transform: translateX(20px);
+      background-color: var(--dark);
+      box-shadow: none;
+    }
   }
 }

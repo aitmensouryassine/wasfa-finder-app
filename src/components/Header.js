@@ -27,6 +27,7 @@ function Header() {
       <nav className={hide ? 'hide' : ''}>
         <NavLink to='/' onClick={handleHide}>
           <i className='bi bi-house'></i>
+          <i className='bi bi-house-fill'></i>
           <span>Home</span>
         </NavLink>
         <NavLink to='/search' onClick={handleHide}>
@@ -35,6 +36,7 @@ function Header() {
         </NavLink>
         <NavLink to='/saved' onClick={handleHide}>
           <i className='bi bi-bookmark'></i>
+          <i className='bi bi-bookmark-fill'></i>
           <span>Saved</span>
         </NavLink>
       </nav>
