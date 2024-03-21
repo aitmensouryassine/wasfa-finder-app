@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from 'react';
 import { getRecipesByMealType, getRecipesByQuery } from '../api';
+import { mealType } from '../utils';
 
 const RecipeContext = createContext();
 
@@ -11,9 +12,12 @@ export function RecipeProvider({ children }) {
   const [homeRecipes, setHomeRecipes] = useState([]);
   const [homeNextRecipesUrl, setHomeNextRecipesUrl] = useState('');
   const [homeRecipesLoading, setHomeRecipesLoading] = useState(true);
+  const [meal, setMeal] = useState('');
 
-  const fetchHomeRecipes = async () => {
-    const data = await getRecipesByMealType();
+  const fetchHomeRecipes = async (meal) => {
+    setMeal(meal);
+    setHomeRecipesLoading(true);
+    const data = await getRecipesByMealType(meal);
     setHomeRecipes(data.recipes);
     setHomeNextRecipesUrl(data.nextRecipesUrl);
     setHomeRecipesLoading(false);
@@ -33,7 +37,7 @@ export function RecipeProvider({ children }) {
   };
 
   useEffect(() => {
-    fetchHomeRecipes();
+    fetchHomeRecipes(mealType());
   }, []);
 
   return (
@@ -50,6 +54,8 @@ export function RecipeProvider({ children }) {
           setHomeNextRecipesUrl,
           homeRecipesLoading,
           setHomeRecipesLoading,
+          fetchHomeRecipes,
+          meal
         },
         search: {
           fetchSearchRecipes,

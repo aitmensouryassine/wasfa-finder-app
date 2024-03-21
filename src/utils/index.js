@@ -54,3 +54,31 @@ export const secondsToHoursMinutes = (seconds) => {
 
   return hours + minutes;
 };
+
+export const meals = [
+  {
+    id: 1,
+    imgSrc: require('../images/breakfast-icon.png'),
+    name: BREAKFAST,
+  },
+  {
+    id: 2,
+    imgSrc: require('../images/lunch-icon.png'),
+    name: LUNCH,
+  },
+  {
+    id: 3,
+    imgSrc: require('../images/tea-icon.png'),
+    name: TEATIME,
+  },
+  {
+    id: 4,
+    imgSrc: require('../images/dinner-icon.png'),
+    name: DINNER,
+  },
+  {
+    id: 5,
+    imgSrc: require('../images/snack-icon.png'),
+    name: SNACK,
+  },
+];

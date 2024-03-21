@@ -6,9 +6,9 @@ export const app_id = '3cec3aee';
 export const baseUrl = `https://api.edamam.com/api/recipes/v2/`;
 export const credentials = `&app_id=${app_id}&app_key=${api_key}`;
 
-export const getRecipesByMealType = async () => {
+export const getRecipesByMealType = async (meal) => {
   try {
-    const { data } = await axios.get(`${baseUrl}?type=public${credentials}&mealType=${mealType()}`);
+    const { data } = await axios.get(`${baseUrl}?type=public${credentials}&mealType=${meal}`);
     return {
       recipes: data?.hits || [],
       nextRecipesUrl: data?._links?.next?.href || '',
@@ -49,8 +49,8 @@ export const getRecipesByQuery = async (term) => {
       recipes: [],
       nextRecipesUrl: '',
     };
-  };
-}
+  }
+};
 
 export const getRecipeById = async (id) => {
   try {

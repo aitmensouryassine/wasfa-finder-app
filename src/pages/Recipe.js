@@ -46,7 +46,7 @@ function Recipe() {
   }, [fetchRecipe]);
 
   return recipe?.label ? (
-    <div className='Recipe'>
+    <section className='Recipe'>
       <div className='header'>
         <div className='title'>
           <h1>{recipe.label}</h1>
@@ -134,7 +134,7 @@ function Recipe() {
           {recipe.source}
         </a>
       </div>
-    </div>
+    </section>
   ) : null;
 }
 

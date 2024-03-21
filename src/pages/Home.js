@@ -1,6 +1,5 @@
 import { useContext } from 'react';
-import Cover from '../components/Cover';
-import { mealType } from '../utils';
+import { meals } from '../utils';
 import Recipes from '../components/Recipes';
 import '../styles/home.scss';
 import Loading from '../components/Loading';
@@ -14,21 +13,40 @@ export default function Home() {
     homeNextRecipesUrl: nextRecipesUrl,
     setHomeNextRecipesUrl: setNextRecipesUrl,
     homeRecipesLoading,
+    fetchHomeRecipes,
+    meal: mealName,
   } = home;
+
+  console.log(mealName);
 
   return (
     <section className='Home'>
-      <Cover mealType={mealType()} />
-      {homeRecipesLoading ? (
-        <Loading />
-      ) : (
-        <Recipes
-          recipes={recipes}
-          setRecipes={setRecipes}
-          nextRecipesUrl={nextRecipesUrl}
-          setNextRecipesUrl={setNextRecipesUrl}
-        />
-      )}
+      <aside>
+        <div className='meal-type-menu'>
+          {meals.map((meal) => (
+            <div
+              key={meal.id}
+              className={`meal ${mealName === meal.name ? 'active' : ''}`}
+              onClick={() => fetchHomeRecipes(meal.name)}
+            >
+              <img src={meal.imgSrc} alt={meal.name} />
+              <span>{meal.name}</span>
+            </div>
+          ))}
+        </div>
+      </aside>
+      <main>
+        {homeRecipesLoading ? (
+          <Loading />
+        ) : (
+          <Recipes
+            recipes={recipes}
+            setRecipes={setRecipes}
+            nextRecipesUrl={nextRecipesUrl}
+            setNextRecipesUrl={setNextRecipesUrl}
+          />
+        )}
+      </main>
     </section>
   );
 }

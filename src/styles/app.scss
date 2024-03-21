@@ -16,7 +16,37 @@ html {
   @include tablet {
     font-size: 16px;
   }
+}
+
+.App-dark,
+.App-light {
+  background-color: var(--main-bg-color);
+}
+
+section {
+  --aside-max-width: 250px;
+  --aside-min-width: 360px;
+  --desktop-main-max-width: 1200px;
+
+  padding-top: $header-height !important;
+  color: var(--primary-text);
+  min-height: 100vh;
+
+  main {
+    width: 100%;
+  }
+
+  @include tablet {
+    display: flex;
+
+    aside {
+      min-width: var(--aside-min-width);
+      max-width: var(--aside-max-width);
+    }
+  }
+
   @include desktop {
-    font-size: 18px;
+    max-width: var(--desktop-main-max-width);
+    margin: 0 auto;
   }
 }

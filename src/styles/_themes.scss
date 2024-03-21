@@ -10,6 +10,8 @@
   --primary-text: #{$primary-text-dark};
   --secondary-text: #{$secondary-text-dark};
   --logo-color: #{$logo-color-dark};
+  --recipe-card-bg-color: #{$recipe-card-bg-color-dark};
+  --hover-bg-color: #{$hover-bg-color-dark};
 }
 
 .App-light {
@@ -22,4 +24,6 @@
   --primary-text: #{$primary-text-light};
   --secondary-text: #{$secondary-text-light};
   --logo-color: #{$logo-color-light};
+  --recipe-card-bg-color: #{$recipe-card-bg-color-light};
+  --hover-bg-color: #{$hover-bg-color-light};
 }
