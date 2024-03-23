@@ -7,6 +7,10 @@ const RecipeContext = createContext();
 export function RecipeProvider({ children }) {
   // saved recipes
   const [savedRecipes, setSavedRecipes] = useState([]);
+  const SAVED_RECIPES_KEY = 'saved-recipes';
+  const saveRecipesToLocalStorage = (recipes) => {
+    localStorage.setItem(SAVED_RECIPES_KEY, JSON.stringify(recipes));
+  };
 
   // Home recipes
   const [homeRecipes, setHomeRecipes] = useState([]);
@@ -42,6 +46,9 @@ export function RecipeProvider({ children }) {
 
   useEffect(() => {
     fetchHomeRecipes(mealType());
+
+    // load saved recipes from local storage
+    setSavedRecipes(JSON.parse(localStorage.getItem(SAVED_RECIPES_KEY)));
   }, []);
 
   return (
@@ -50,6 +57,7 @@ export function RecipeProvider({ children }) {
         saved: {
           savedRecipes,
           setSavedRecipes,
+          saveRecipesToLocalStorage,
         },
         home: {
           homeRecipes,

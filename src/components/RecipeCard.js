@@ -12,20 +12,28 @@ function RecipeCard({ recipe }) {
   const [icon, setIcon] = useState(save_icon);
 
   const { saved } = useContext(RecipeContext);
-  const { savedRecipes, setSavedRecipes } = saved;
+  const { savedRecipes, setSavedRecipes, saveRecipesToLocalStorage } = saved;
 
   const saveRecipe = (evt) => {
     evt.preventDefault();
 
     if (isSaved) {
-      setSavedRecipes((prevSavedRecipes) =>
-        prevSavedRecipes.filter(({ recipe: savedRecipe }) => savedRecipe.uri !== recipe.uri)
-      );
+      setSavedRecipes((prevSavedRecipes) => {
+        const recipes = prevSavedRecipes.filter(({ recipe: savedRecipe }) => savedRecipe.uri !== recipe.uri);
+        saveRecipesToLocalStorage(recipes);
+        return recipes;
+      });
       setIsSaved(false);
     } else {
-      setSavedRecipes((prevSavedRecipes) => [...prevSavedRecipes, { recipe }]);
+      setSavedRecipes((prevSavedRecipes) => {
+        const recipes = [...prevSavedRecipes, { recipe }];
+        saveRecipesToLocalStorage(recipes);
+        return recipes;
+      });
       setIsSaved(true);
     }
+
+    // update local storage
   };
 
   useEffect(() => {
