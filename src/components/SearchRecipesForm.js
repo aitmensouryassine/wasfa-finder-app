@@ -135,7 +135,7 @@ export default function SearchRecipesForm() {
                     value={ includeIngredient }
                     onChange={ (e) => setIncludeIngredient(e.target.value) }
                   />
-                  <button role='submit'>
+                  <button>
                     <i className='bi bi-plus'></i>
                   </button>
                 </div>
@@ -164,7 +164,7 @@ export default function SearchRecipesForm() {
                     value={ excludeIngredient }
                     onChange={ (e) => setExcludeIngredient(e.target.value) }
                   />
-                  <button role='submit'>
+                  <button>
                     <i className='bi bi-plus'></i>
                   </button>
                 </div>

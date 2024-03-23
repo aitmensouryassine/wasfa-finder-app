@@ -5,7 +5,7 @@
     .meal {
       cursor: pointer;
       @include flex-hv-center;
-      justify-content: start;
+      justify-content: flex-start;
       padding: 0.5rem;
       border-radius: 0.5rem;
 
@@ -13,6 +13,7 @@
         width: 40px;
         height: 40px;
       }
+
       span {
         font-size: 1.1rem;
         margin-left: 1rem;

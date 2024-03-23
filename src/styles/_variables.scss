@@ -1,9 +1,16 @@
 // media queries
+@mixin xsmobile {
+  @media (max-width: 365px) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (min-width: 700px) {
     @content;
   }
 }
+
 @mixin desktop {
   @media (min-width: 1200px) {
     @content;

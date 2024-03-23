@@ -4,7 +4,11 @@
   min-width: $logo-width;
   height: $header-height;
   @include flex-hv-center;
-  justify-content: end;
+  justify-content: flex-end;
+
+  @include xsmobile {
+    min-width: 0;
+  }
 
   .theme-toggler {
     --light: #d8dbe0;
