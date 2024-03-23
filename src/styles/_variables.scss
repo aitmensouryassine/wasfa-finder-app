@@ -19,6 +19,8 @@ $card-border-color: #d5d5d5;
 // DIMENSIONS
 $header-height: 55px;
 $logo-width: 145px;
+$tablet-min-width: 700px;
+$desktop-min-width: 1200px;
 
 // mixins
 @mixin flex-hv-space-between-center {

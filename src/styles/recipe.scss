@@ -1,7 +1,8 @@
 @import './variables';
 
 .Recipe {
-  padding: 0 1rem;
+  padding: 1rem;
+  display: block;
 
   .header,
   .ingredients-container,
@@ -27,7 +28,7 @@
       img {
         border-radius: 1rem;
         margin: 1rem 0;
-        border: 1px solid $card-border-color;
+        border: 1px solid var(--border-color);
       }
     }
     .information {
@@ -43,11 +44,11 @@
           margin: 0.5rem 0;
           span {
             font-size: 1.5rem;
-            color: $primary-color;
+            color: var(--logo-color);
           }
           i {
             font-size: 3rem;
-            color: $primary-color;
+            color: var(--logo-color);
           }
           small {
             font-size: 1.25rem;
@@ -70,7 +71,7 @@
             width: 200px;
             height: 200px;
             border-radius: 1rem;
-            border: 1px solid $card-border-color;
+            border: 1px solid var(--border-color);
           }
         }
         .name {
@@ -96,7 +97,7 @@
   }
   .nutritions {
     .nutrients {
-      background-color: $primary-color;
+      background-color: var(--logo-color);
       color: white;
       padding: 1rem;
       @include flex-hv-space-around-center;
@@ -116,7 +117,16 @@
     }
   }
 
+  .instructions {
+    a {
+      text-decoration: none;
+      color: var(--logo-color);
+    }
+  }
+
   @include tablet {
+    max-width: $tablet-min-width;
+    margin: 0 auto;
     .header {
       .title {
         width: 50%;
@@ -149,5 +159,10 @@
         margin: 0 2.5rem;
       }
     }
+  }
+
+  @include desktop {
+    max-width: $desktop-min-width;
+    margin: 0 auto;
   }
 }

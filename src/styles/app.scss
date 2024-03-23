@@ -26,7 +26,6 @@ html {
 section {
   --aside-max-width: 250px;
   --aside-min-width: 360px;
-  --desktop-main-max-width: 1200px;
 
   padding-top: $header-height !important;
   color: var(--primary-text);
@@ -53,7 +52,7 @@ section {
   }
 
   @include desktop {
-    max-width: var(--desktop-main-max-width);
+    max-width: $desktop-min-width;
     margin: 0 auto;
   }
 }
