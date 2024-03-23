@@ -36,7 +36,7 @@ const MIN = 1,
   MAX = 20;
 
 export default function SearchRecipesForm() {
-  const [ingredientsRange, setIngredientsRange] = useState(['', '']);
+  const [ingredientsRange, setIngredientsRange] = useState([1, 1]);
   const [minIngredients, setMinIngredients] = useState('');
   const [maxIngredients, setMaxIngredients] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -109,31 +109,31 @@ export default function SearchRecipesForm() {
       <div className='form'>
         <div className='group'>
           <label htmlFor='search-query'>General search</label>
-          <input name='search-query' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+          <input name='search-query' type='text' value={ searchQuery } onChange={ (e) => setSearchQuery(e.target.value) } />
         </div>
 
         <div className='advanced-search-btn'>
           <span
-            onMouseEnter={() => setAdvancedSearchHoverd(true)}
-            onMouseLeave={() => setAdvancedSearchHoverd(false)}
-            onClick={() => setAdvancedSearch((prevState) => !prevState)}
-            className={advancedSearch ? 'rotate' : ''}
+            onMouseEnter={ () => setAdvancedSearchHoverd(true) }
+            onMouseLeave={ () => setAdvancedSearchHoverd(false) }
+            onClick={ () => setAdvancedSearch((prevState) => !prevState) }
+            className={ advancedSearch ? 'rotate' : '' }
           >
-            Advanced Search{' '}
-            {advancedSearchHovered ? <i className='bi bi-caret-down-fill'></i> : <i className='bi bi-caret-down'></i>}
+            Advanced Search{ ' ' }
+            { advancedSearchHovered ? <i className='bi bi-caret-down-fill'></i> : <i className='bi bi-caret-down'></i> }
           </span>
         </div>
-        <div className={`advanced-search-container ${advancedSearch ? 'active' : ''}`}>
+        <div className={ `advanced-search-container ${advancedSearch ? 'active' : ''}` }>
           <div className='advanced-search'>
-            <form onSubmit={addIncludeIngredient} className='include-ingredients-form'>
+            <form onSubmit={ addIncludeIngredient } className='include-ingredients-form'>
               <div className='group'>
                 <label htmlFor='inlude-ingredient'>Include ingredients</label>
                 <div className='inputs'>
                   <input
                     name='inlude-ingredient'
                     type='text'
-                    value={includeIngredient}
-                    onChange={(e) => setIncludeIngredient(e.target.value)}
+                    value={ includeIngredient }
+                    onChange={ (e) => setIncludeIngredient(e.target.value) }
                   />
                   <button role='submit'>
                     <i className='bi bi-plus'></i>
@@ -141,28 +141,28 @@ export default function SearchRecipesForm() {
                 </div>
               </div>
               <div className='included-ingredients'>
-                {includeIngredients.map((ingr, idx) => (
+                { includeIngredients.map((ingr, idx) => (
                   <span
-                    key={idx}
-                    onClick={() =>
+                    key={ idx }
+                    onClick={ () =>
                       setIncludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
                     }
                   >
-                    {ingr}
+                    { ingr }
                   </span>
-                ))}
+                )) }
               </div>
             </form>
 
-            <form onSubmit={addExcludeIngredient} className='exclude-ingredients-form'>
+            <form onSubmit={ addExcludeIngredient } className='exclude-ingredients-form'>
               <div className='group'>
                 <label htmlFor='exlude-ingredient'>Exclude ingredients</label>
                 <div className='inputs'>
                   <input
                     name='exlude-ingredient'
                     type='text'
-                    value={excludeIngredient}
-                    onChange={(e) => setExcludeIngredient(e.target.value)}
+                    value={ excludeIngredient }
+                    onChange={ (e) => setExcludeIngredient(e.target.value) }
                   />
                   <button role='submit'>
                     <i className='bi bi-plus'></i>
@@ -170,16 +170,16 @@ export default function SearchRecipesForm() {
                 </div>
               </div>
               <div className='excluded-ingredients'>
-                {excludeIngredients.map((ingr, idx) => (
+                { excludeIngredients.map((ingr, idx) => (
                   <span
-                    key={idx}
-                    onClick={() =>
+                    key={ idx }
+                    onClick={ () =>
                       setExcludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
                     }
                   >
-                    {ingr}
+                    { ingr }
                   </span>
-                ))}
+                )) }
               </div>
             </form>
 
@@ -188,11 +188,11 @@ export default function SearchRecipesForm() {
               <RangeSlider
                 className='slider'
                 name='number-of-ingredients'
-                min={MIN}
-                max={MAX}
-                step={1}
-                value={ingredientsRange}
-                onInput={handleRangeChange}
+                min={ MIN }
+                max={ MAX }
+                step={ 1 }
+                value={ ingredientsRange }
+                onInput={ handleRangeChange }
               />
               <div className='min-max'>
                 <div className='min'>
@@ -200,10 +200,10 @@ export default function SearchRecipesForm() {
                   <input
                     type='number'
                     name='min'
-                    value={minIngredients}
-                    onChange={handleMinIngredient}
-                    min={ingredientsRange[0]}
-                    max={ingredientsRange[1]}
+                    value={ minIngredients }
+                    onChange={ handleMinIngredient }
+                    min={ ingredientsRange[0] }
+                    max={ ingredientsRange[1] }
                   />
                 </div>
                 <div className='max'>
@@ -211,10 +211,10 @@ export default function SearchRecipesForm() {
                   <input
                     type='number'
                     name='max'
-                    value={maxIngredients}
-                    onChange={handleMaxIngredient}
-                    min={ingredientsRange[0]}
-                    max={ingredientsRange[1]}
+                    value={ maxIngredients }
+                    onChange={ handleMaxIngredient }
+                    min={ ingredientsRange[0] }
+                    max={ ingredientsRange[1] }
                   />
                 </div>
               </div>
@@ -222,38 +222,38 @@ export default function SearchRecipesForm() {
 
             <div className='group'>
               <label htmlFor='time'>
-                Time <small>(minutes)</small>
+                Cooking Time <small>(minutes)</small>
               </label>
-              <input type='number' name='time' value={time} onChange={(evt) => setTime(parseInt(evt.target.value))} />
+              <input type='number' name='time' value={ time } onChange={ (evt) => setTime(parseInt(evt.target.value)) } />
             </div>
 
             <div className='group'>
               <label htmlFor='cuisine-type'>Cuisine Type</label>
-              <select name='cuisine-type' onChange={(e) => setCuisineType(e.target.value)}>
+              <select name='cuisine-type' onChange={ (e) => setCuisineType(e.target.value) }>
                 <option></option>
-                {cuisineTypeChoices.map(({ id, name }) => (
-                  <option key={id} value={name}>
-                    {name}
+                { cuisineTypeChoices.map(({ id, name }) => (
+                  <option key={ id } value={ name }>
+                    { name }
                   </option>
-                ))}
+                )) }
               </select>
             </div>
 
             <div className='group'>
               <label htmlFor='diet'>Diet</label>
-              <select name='diet' onChange={(e) => setDiet(e.target.value)}>
+              <select name='diet' onChange={ (e) => setDiet(e.target.value) }>
                 <option></option>
-                {dietChoices.map(({ id, name }) => (
-                  <option key={id} value={name}>
-                    {name}
+                { dietChoices.map(({ id, name }) => (
+                  <option key={ id } value={ name }>
+                    { name }
                   </option>
-                ))}
+                )) }
               </select>
             </div>
           </div>
         </div>
         <div className='submit'>
-          <a className='btn' onClick={handleSubmit} href='#search'>
+          <a className='btn' onClick={ handleSubmit } href='#search'>
             Search
           </a>
         </div>
