@@ -48,12 +48,12 @@ export function RecipeProvider({ children }) {
     fetchHomeRecipes(mealType());
 
     // load saved recipes from local storage
-    setSavedRecipes(JSON.parse(localStorage.getItem(SAVED_RECIPES_KEY)));
+    setSavedRecipes(JSON.parse(localStorage.getItem(SAVED_RECIPES_KEY)) || []);
   }, []);
 
   return (
     <RecipeContext.Provider
-      value={{
+      value={ {
         saved: {
           savedRecipes,
           setSavedRecipes,
@@ -82,9 +82,9 @@ export function RecipeProvider({ children }) {
           setIngredients,
           ingredientInput,
         },
-      }}
+      } }
     >
-      {children}
+      { children }
     </RecipeContext.Provider>
   );
 }
