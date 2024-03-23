@@ -47,6 +47,8 @@ export default function SearchRecipesForm() {
   const [cuisineType, setCuisineType] = useState('');
   const [diet, setDiet] = useState('');
   const [time, setTime] = useState('');
+  const [advancedSearch, setAdvancedSearch] = useState(false);
+  const [advancedSearchHovered, setAdvancedSearchHoverd] = useState(false);
 
   const handleRangeChange = (range) => {
     const [min, max] = range;
@@ -110,130 +112,145 @@ export default function SearchRecipesForm() {
           <input name='search-query' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         </div>
 
-        <form onSubmit={addIncludeIngredient} className='include-ingredients-form'>
-          <div className='group'>
-            <label htmlFor='inlude-ingredient'>Include ingredients</label>
-            <div className='inputs'>
-              <input
-                name='inlude-ingredient'
-                type='text'
-                value={includeIngredient}
-                onChange={(e) => setIncludeIngredient(e.target.value)}
-              />
-              <button role='submit'>
-                <i className='bi bi-plus'></i>
-              </button>
-            </div>
-          </div>
-          <div className='included-ingredients'>
-            {includeIngredients.map((ingr, idx) => (
-              <span
-                key={idx}
-                onClick={() =>
-                  setIncludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
-                }
-              >
-                {ingr}
-              </span>
-            ))}
-          </div>
-        </form>
-
-        <form onSubmit={addExcludeIngredient} className='exclude-ingredients-form'>
-          <div className='group'>
-            <label htmlFor='exlude-ingredient'>Exclude ingredients</label>
-            <div className='inputs'>
-              <input
-                name='exlude-ingredient'
-                type='text'
-                value={excludeIngredient}
-                onChange={(e) => setExcludeIngredient(e.target.value)}
-              />
-              <button role='submit'>
-                <i className='bi bi-plus'></i>
-              </button>
-            </div>
-          </div>
-          <div className='excluded-ingredients'>
-            {excludeIngredients.map((ingr, idx) => (
-              <span
-                key={idx}
-                onClick={() =>
-                  setExcludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
-                }
-              >
-                {ingr}
-              </span>
-            ))}
-          </div>
-        </form>
-
-        <div className='group'>
-          <label htmlFor='number-of-ingredients'>Number of ingredients</label>
-          <RangeSlider
-            className='slider'
-            name='number-of-ingredients'
-            min={MIN}
-            max={MAX}
-            step={1}
-            value={ingredientsRange}
-            onInput={handleRangeChange}
-          />
-          <div className='min-max'>
-            <div className='min'>
-              <label htmlFor='min'>Min</label>
-              <input
-                type='number'
-                name='min'
-                value={minIngredients}
-                onChange={handleMinIngredient}
-                min={ingredientsRange[0]}
-                max={ingredientsRange[1]}
-              />
-            </div>
-            <div className='max'>
-              <label htmlFor='max'>Max</label>
-              <input
-                type='number'
-                name='max'
-                value={maxIngredients}
-                onChange={handleMaxIngredient}
-                min={ingredientsRange[0]}
-                max={ingredientsRange[1]}
-              />
-            </div>
-          </div>
+        <div className='advanced-search-btn'>
+          <span
+            onMouseEnter={() => setAdvancedSearchHoverd(true)}
+            onMouseLeave={() => setAdvancedSearchHoverd(false)}
+            onClick={() => setAdvancedSearch((prevState) => !prevState)}
+            className={advancedSearch ? 'rotate' : ''}
+          >
+            Advanced Search{' '}
+            {advancedSearchHovered ? <i className='bi bi-caret-down-fill'></i> : <i className='bi bi-caret-down'></i>}
+          </span>
         </div>
+        <div className={`advanced-search-container ${advancedSearch ? 'active' : ''}`}>
+          <div className='advanced-search'>
+            <form onSubmit={addIncludeIngredient} className='include-ingredients-form'>
+              <div className='group'>
+                <label htmlFor='inlude-ingredient'>Include ingredients</label>
+                <div className='inputs'>
+                  <input
+                    name='inlude-ingredient'
+                    type='text'
+                    value={includeIngredient}
+                    onChange={(e) => setIncludeIngredient(e.target.value)}
+                  />
+                  <button role='submit'>
+                    <i className='bi bi-plus'></i>
+                  </button>
+                </div>
+              </div>
+              <div className='included-ingredients'>
+                {includeIngredients.map((ingr, idx) => (
+                  <span
+                    key={idx}
+                    onClick={() =>
+                      setIncludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
+                    }
+                  >
+                    {ingr}
+                  </span>
+                ))}
+              </div>
+            </form>
 
-        <div className='group'>
-          <label htmlFor='time'>
-            Time <small>(minutes)</small>
-          </label>
-          <input type='number' name='time' value={time} onChange={(evt) => setTime(parseInt(evt.target.value))} />
-        </div>
+            <form onSubmit={addExcludeIngredient} className='exclude-ingredients-form'>
+              <div className='group'>
+                <label htmlFor='exlude-ingredient'>Exclude ingredients</label>
+                <div className='inputs'>
+                  <input
+                    name='exlude-ingredient'
+                    type='text'
+                    value={excludeIngredient}
+                    onChange={(e) => setExcludeIngredient(e.target.value)}
+                  />
+                  <button role='submit'>
+                    <i className='bi bi-plus'></i>
+                  </button>
+                </div>
+              </div>
+              <div className='excluded-ingredients'>
+                {excludeIngredients.map((ingr, idx) => (
+                  <span
+                    key={idx}
+                    onClick={() =>
+                      setExcludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
+                    }
+                  >
+                    {ingr}
+                  </span>
+                ))}
+              </div>
+            </form>
 
-        <div className='group'>
-          <label htmlFor='cuisine-type'>Cuisine Type</label>
-          <select name='cuisine-type' onChange={(e) => setCuisineType(e.target.value)}>
-            <option></option>
-            {cuisineTypeChoices.map(({ id, name }) => (
-              <option key={id} value={name}>
-                {name}
-              </option>
-            ))}
-          </select>
-        </div>
+            <div className='group'>
+              <label htmlFor='number-of-ingredients'>Number of ingredients</label>
+              <RangeSlider
+                className='slider'
+                name='number-of-ingredients'
+                min={MIN}
+                max={MAX}
+                step={1}
+                value={ingredientsRange}
+                onInput={handleRangeChange}
+              />
+              <div className='min-max'>
+                <div className='min'>
+                  <label htmlFor='min'>Min</label>
+                  <input
+                    type='number'
+                    name='min'
+                    value={minIngredients}
+                    onChange={handleMinIngredient}
+                    min={ingredientsRange[0]}
+                    max={ingredientsRange[1]}
+                  />
+                </div>
+                <div className='max'>
+                  <label htmlFor='max'>Max</label>
+                  <input
+                    type='number'
+                    name='max'
+                    value={maxIngredients}
+                    onChange={handleMaxIngredient}
+                    min={ingredientsRange[0]}
+                    max={ingredientsRange[1]}
+                  />
+                </div>
+              </div>
+            </div>
 
-        <div className='group'>
-          <label htmlFor='diet'>Diet</label>
-          <select name='diet' onChange={(e) => setDiet(e.target.value)}>
-            <option></option>
-            {dietChoices.map(({ id, name }) => (
-              <option key={id} value={name}>
-                {name}
-              </option>
-            ))}
-          </select>
+            <div className='group'>
+              <label htmlFor='time'>
+                Time <small>(minutes)</small>
+              </label>
+              <input type='number' name='time' value={time} onChange={(evt) => setTime(parseInt(evt.target.value))} />
+            </div>
+
+            <div className='group'>
+              <label htmlFor='cuisine-type'>Cuisine Type</label>
+              <select name='cuisine-type' onChange={(e) => setCuisineType(e.target.value)}>
+                <option></option>
+                {cuisineTypeChoices.map(({ id, name }) => (
+                  <option key={id} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className='group'>
+              <label htmlFor='diet'>Diet</label>
+              <select name='diet' onChange={(e) => setDiet(e.target.value)}>
+                <option></option>
+                {dietChoices.map(({ id, name }) => (
+                  <option key={id} value={name}>
+                    {name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
         <div className='submit'>
           <a className='btn' onClick={handleSubmit} href='#search'>

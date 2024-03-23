@@ -142,5 +142,40 @@
         }
       }
     }
+    .advanced-search-btn {
+      i {
+        transform: rotate(90deg);
+        &.rotate {
+          transform: rotate(180deg);
+        }
+      }
+
+      span {
+        &:hover {
+          cursor: pointer;
+        }
+        i::before {
+          transform: rotate(0deg);
+          transition: transform 0.5s ease-in-out;
+        }
+        &.rotate {
+          i::before {
+            transform: rotate(-180deg);
+          }
+        }
+      }
+    }
+    .advanced-search-container {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.5s ease-in-out;
+
+      .advanced-search {
+        overflow: hidden;
+      }
+      &.active {
+        grid-template-rows: 1fr;
+      }
+    }
   }
 }
