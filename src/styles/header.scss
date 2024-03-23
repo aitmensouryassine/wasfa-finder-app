@@ -1,54 +1,142 @@
-@import './variables';
+@use 'variables' as *;
+@use 'themes' as *;
 
 header {
-  background-color: $primary-color;
-  height: $header-height-mobile;
+  background-color: var(--header-bg-color);
+  height: $header-height;
   @include flex-hv-space-between-center;
+  padding: 0 1rem;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-bottom: 2px solid var(--border-color);
 
   nav {
-    height: 100%;
+    position: absolute;
+    top: $header-height;
+    left: 0;
+    transition: left 0.3s ease-in-out;
+    z-index: 1;
+    background-color: var(--header-bg-color);
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+
     display: flex;
+    flex-direction: column;
     a {
-      color: $nav-link-color;
+      color: var(--logo-color);
+      border-left: 4px solid var(--header-bg-color);
       height: 100%;
-      @include flex-hv-center;
-      font-size: 1.3rem;
-      flex-direction: column;
+      margin: 0.5rem;
+      padding: 0.5rem 0.5rem;
       text-decoration: none;
-      padding: 0 0.5rem;
+      display: flex;
+      align-items: center;
+
       i {
+        font-size: 1.4rem;
         padding: 0 0.5rem;
         margin-right: 0;
-      }
-      span {
-        font-size: 0.8rem;
       }
 
       &:hover,
       &.active {
-        background-color: #ffffff;
-        color: $nav-link-color-active;
+        border-left: 4px solid var(--logo-color);
       }
+      &.active > i.bi-house,
+      &.active > i.bi-bookmark {
+        display: none;
+      }
+      i[class$='fill'] {
+        display: none;
+      }
+      &.active > i[class$='fill'] {
+        display: block;
+      }
+    }
+    &.hide {
+      left: -100%;
     }
   }
   .logo {
-    padding-left: 0.5rem;
-    img {
-      height: 40px;
+    @include flex-hv-center;
+    a {
+      img {
+        // height: calc($header-height * 0.7);
+        width: $logo-width;
+      }
+    }
+    .mobile-menu {
+      margin-left: 1rem;
+      color: var(--nav-link-color);
+      font-size: 2rem;
+      cursor: pointer;
     }
   }
 
   @include tablet {
-    height: $header-height-tablet;
-    .logo {
-      padding-left: 1rem;
-      img {
-        height: 50px;
+    .menu-button {
+      display: none;
+    }
+
+    nav {
+      position: initial;
+      background-color: transparent;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      @include flex-hv-center;
+      flex-direction: row;
+      a {
+        border-left: none;
+        height: 100%;
+        margin: 0 0.5rem;
+        padding: 0 1rem;
+        border-radius: 0.25rem;
+        color: var(--secondary-text);
+
+        i {
+          font-size: 1.4rem;
+          padding: 0 0.5rem;
+          margin-right: 0;
+        }
+        &:hover {
+          border-left: none;
+          background-color: var(--border-color);
+          color: var(--secondary-text);
+        }
+        span {
+          position: absolute;
+          top: $header-height;
+          background-color: var(--border-color);
+          color: var(--primary-text);
+          font-size: 0.7rem;
+          padding: 0.25rem 0.5rem;
+          margin-top: 0.25rem;
+          border-radius: 0.25rem;
+          transform: scale(0);
+          transition: all 0.3s ease-in-out;
+        }
+        &:hover > span {
+          transform: scale(1);
+        }
+        &.active {
+          border-left: none;
+          box-sizing: border-box;
+          background-color: transparent;
+          color: var(--logo-color);
+          border-radius: 0;
+          border-bottom: 3px solid var(--logo-color);
+        }
+      }
+      &.hide {
+        left: 0;
       }
     }
   }
   @include desktop {
-    height: $header-height-desktop;
     nav {
       a {
         font-size: 1rem;

@@ -7,7 +7,7 @@ export const DINNER = 'Dinner'; /* 6pm to 8pm */
 export const mealType = () => {
   const time = new Date().getHours();
 
-  if (time <= 9) return BREAKFAST;
+  if (time >= 6 && time <= 9) return BREAKFAST;
   else if (time >= 12 && time <= 14) return LUNCH;
   else if (time >= 15 && time <= 16) return TEATIME;
   else if (time >= 17 && time <= 20) return DINNER;
@@ -54,3 +54,31 @@ export const secondsToHoursMinutes = (seconds) => {
 
   return hours + minutes;
 };
+
+export const meals = [
+  {
+    id: 1,
+    imgSrc: require('../images/breakfast-icon.png'),
+    name: BREAKFAST,
+  },
+  {
+    id: 2,
+    imgSrc: require('../images/lunch-icon.png'),
+    name: LUNCH,
+  },
+  {
+    id: 3,
+    imgSrc: require('../images/tea-icon.png'),
+    name: TEATIME,
+  },
+  {
+    id: 4,
+    imgSrc: require('../images/dinner-icon.png'),
+    name: DINNER,
+  },
+  {
+    id: 5,
+    imgSrc: require('../images/snack-icon.png'),
+    name: SNACK,
+  },
+];

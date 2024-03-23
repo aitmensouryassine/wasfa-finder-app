@@ -10,22 +10,24 @@ function Recipes({ recipes, setRecipes, nextRecipesUrl, setNextRecipesUrl }) {
   const loaderRef = useRef(null);
 
   useEffect(() => {
+    const currentLoadRef = loaderRef.current;
+
     const observer = new IntersectionObserver((entries) => {
       const target = entries[0];
       if (target.isIntersecting) {
         getNextRecipes(nextRecipesUrl, setRecipes, setNextRecipesUrl, setLoading, setHasMore);
       }
     });
-    if (loaderRef.current) {
-      observer.observe(loaderRef.current);
+    if (currentLoadRef) {
+      observer.observe(currentLoadRef);
     }
 
     return () => {
-      if (loaderRef.current) {
-        observer.unobserve(loaderRef.current);
+      if (currentLoadRef) {
+        observer.unobserve(currentLoadRef);
       }
     };
-  }, [recipes]);
+  });
 
   return (
     <div className='Recipes'>

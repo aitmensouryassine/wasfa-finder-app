@@ -2,7 +2,7 @@ import '../styles/recipe-card.scss';
 import { Link } from 'react-router-dom';
 import { getRecipeId } from '../utils';
 import { useEffect, useState, useContext } from 'react';
-import context from '../context';
+import RecipeContext from '../context/recipe';
 
 const save_icon = <i className='bi bi-bookmark save-icon'></i>;
 const saved_icon = <i className='bi bi-bookmark-fill saved-icon'></i>;
@@ -11,7 +11,7 @@ function RecipeCard({ recipe }) {
   const [isSaved, setIsSaved] = useState(false);
   const [icon, setIcon] = useState(save_icon);
 
-  const { saved } = useContext(context);
+  const { saved } = useContext(RecipeContext);
   const { savedRecipes, setSavedRecipes } = saved;
 
   const saveRecipe = (evt) => {

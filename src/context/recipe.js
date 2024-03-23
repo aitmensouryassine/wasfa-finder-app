@@ -1,19 +1,23 @@
 import { createContext, useEffect, useState, useRef } from 'react';
 import { getRecipesByMealType, getRecipesByQuery } from '../api';
+import { mealType } from '../utils';
 
-const context = createContext();
+const RecipeContext = createContext();
 
-export function ContextProvider({ children }) {
+export function RecipeProvider({ children }) {
   // saved recipes
   const [savedRecipes, setSavedRecipes] = useState([]);
 
   // Home recipes
   const [homeRecipes, setHomeRecipes] = useState([]);
   const [homeNextRecipesUrl, setHomeNextRecipesUrl] = useState('');
-  const [homeRecipesLoading, setHomeRecipesLoading] = useState(false);
+  const [homeRecipesLoading, setHomeRecipesLoading] = useState(true);
+  const [meal, setMeal] = useState('');
 
-  const fetchHomeRecipes = async () => {
-    const data = await getRecipesByMealType();
+  const fetchHomeRecipes = async (meal) => {
+    setMeal(meal);
+    setHomeRecipesLoading(true);
+    const data = await getRecipesByMealType(meal);
     setHomeRecipes(data.recipes);
     setHomeNextRecipesUrl(data.nextRecipesUrl);
     setHomeRecipesLoading(false);
@@ -36,15 +40,13 @@ export function ContextProvider({ children }) {
     setSearchRecipesLoading(false);
   };
 
-
-
   useEffect(() => {
-    fetchHomeRecipes();
+    fetchHomeRecipes(mealType());
   }, []);
 
   return (
-    <context.Provider
-      value={ {
+    <RecipeContext.Provider
+      value={{
         saved: {
           savedRecipes,
           setSavedRecipes,
@@ -56,6 +58,8 @@ export function ContextProvider({ children }) {
           setHomeNextRecipesUrl,
           homeRecipesLoading,
           setHomeRecipesLoading,
+          fetchHomeRecipes,
+          meal,
         },
         search: {
           fetchSearchRecipes,
@@ -70,11 +74,11 @@ export function ContextProvider({ children }) {
           setIngredients,
           ingredientInput,
         },
-      } }
+      }}
     >
-      { children }
-    </context.Provider>
+      {children}
+    </RecipeContext.Provider>
   );
 }
 
-export default context;
+export default RecipeContext;

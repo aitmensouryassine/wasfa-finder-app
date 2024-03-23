@@ -1,8 +1,11 @@
-@import './variables';
+@use 'variables' as *;
 
 .Recipes {
   padding: 1rem;
-  @include flex-hv-space-around-center;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: start;
   flex-wrap: wrap;
 
   @include tablet {

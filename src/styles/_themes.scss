@@ -1,0 +1,29 @@
+@use 'colors' as *;
+
+.App-dark {
+  --main-bg-color: #{$main-bg-color-dark};
+  --header-bg-color: #{$header-bg-color-dark};
+  --nav-link-color: #{$nav-link-color-dark};
+  --nav-link-color-active: #{$nav-link-color-active-dark};
+  --primary-color: #{$primary-color-dark};
+  --border-color: #{$border-color-dark};
+  --primary-text: #{$primary-text-dark};
+  --secondary-text: #{$secondary-text-dark};
+  --logo-color: #{$logo-color-dark};
+  --recipe-card-bg-color: #{$recipe-card-bg-color-dark};
+  --hover-bg-color: #{$hover-bg-color-dark};
+}
+
+.App-light {
+  --main-bg-color: #{$main-bg-color-light};
+  --header-bg-color: #{$header-bg-color-light};
+  --nav-link-color: #{$nav-link-color-light};
+  --nav-link-color-active: #{$nav-link-color-active-light};
+  --primary-color: #{$primary-color-light};
+  --border-color: #{$border-color-light};
+  --primary-text: #{$primary-text-light};
+  --secondary-text: #{$secondary-text-light};
+  --logo-color: #{$logo-color-light};
+  --recipe-card-bg-color: #{$recipe-card-bg-color-light};
+  --hover-bg-color: #{$hover-bg-color-light};
+}

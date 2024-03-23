@@ -4,11 +4,12 @@
   width: 300px;
   margin: 1rem;
   padding: 0.5rem;
-  border: 1px solid $card-border-color;
+  border: 1px solid var(--border-color);
   border-radius: 1rem;
   overflow: hidden;
   text-decoration: none;
-  color: black;
+  color: var(--primary-text);
+  background-color: var(--recipe-card-bg-color);
 
   .thumbnail {
     background-position: center;
@@ -31,7 +32,7 @@
 
       .cal,
       .cuisine-type {
-        background-color: $primary-color;
+        background-color: var(--logo-color);
         color: white;
         padding: 0.2rem 0.4rem;
         border-radius: 0.2rem;
@@ -52,7 +53,7 @@
     .save {
       font-size: 1.2rem;
       .saved-icon {
-        color: $primary-color;
+        color: var(--logo-color);
       }
     }
   }
