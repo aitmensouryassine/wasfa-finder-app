@@ -2,11 +2,6 @@
 
 .Home {
   .meal-type-menu {
-    position: sticky;
-    top: $header-height;
-    max-height: calc(100vh - $header-height);
-    overflow: auto;
-    padding: 2rem;
     .meal {
       cursor: pointer;
       @include flex-hv-center;
@@ -19,7 +14,7 @@
         height: 40px;
       }
       span {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         margin-left: 1rem;
       }
 
