@@ -25,7 +25,7 @@ header {
 
     display: flex;
     flex-direction: column;
-    a {
+    > a {
       color: var(--logo-color);
       border-left: 4px solid var(--header-bg-color);
       height: 100%;
@@ -133,6 +133,9 @@ header {
       }
       &.hide {
         left: 0;
+      }
+      .Footer {
+        display: none;
       }
     }
   }

@@ -6,6 +6,7 @@ import ThemeContext from '../context/theme';
 import '../styles/header.scss';
 import ThemeToggler from './ThemeToggler';
 import MenuButton from './MenuButton';
+import Footer from './Footer';
 
 function Header() {
   const [hide, setHide] = useState(true);
@@ -39,6 +40,7 @@ function Header() {
           <i className='bi bi-bookmark-fill'></i>
           <span>Saved</span>
         </NavLink>
+        <Footer device='mobile' />
       </nav>
       <ThemeToggler />
     </header>

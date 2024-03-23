@@ -1,0 +1,19 @@
+@use 'variables' as *;
+
+.Footer {
+  margin-top: 2rem;
+  padding: 2rem;
+  color: var(--secondary-text);
+
+  @include tablet {
+    font-size: 1rem;
+  }
+
+  a {
+    color: var(--secondary-text);
+    text-decoration: none;
+  }
+  .copyright {
+    margin-top: 0.25rem;
+  }
+}

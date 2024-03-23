@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+.Saved {
+  .Footer {
+    display: none;
+  }
+
+  .clear-all {
+    margin-top: 1rem;
+
+    button {
+      background-color: transparent;
+      color: var(--primary-text);
+      border: none;
+      cursor: pointer;
+      border-bottom: 1px solid var(--logo-color);
+      transition: border-bottom 0.2s ease-in-out;
+      &:hover {
+        border-bottom: 2px solid var(--logo-color);
+      }
+    }
+  }
+
+  @include tablet {
+    .Footer {
+      display: block;
+    }
+  }
+}

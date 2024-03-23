@@ -4,6 +4,7 @@ import Recipes from '../components/Recipes';
 import '../styles/home.scss';
 import Loading from '../components/Loading';
 import RecipeContext from '../context/recipe';
+import Footer from '../components/Footer';
 
 export default function Home() {
   const { home } = useContext(RecipeContext);
@@ -20,17 +21,20 @@ export default function Home() {
   return (
     <section className='Home'>
       <aside>
-        <div className='meal-type-menu'>
-          {meals.map((meal) => (
-            <div
-              key={meal.id}
-              className={`meal ${mealName === meal.name ? 'active' : ''}`}
-              onClick={() => fetchHomeRecipes(meal.name)}
-            >
-              <img src={meal.imgSrc} alt={meal.name} />
-              <span>{meal.name}</span>
-            </div>
-          ))}
+        <div>
+          <div className='meal-type-menu'>
+            {meals.map((meal) => (
+              <div
+                key={meal.id}
+                className={`meal ${mealName === meal.name ? 'active' : ''}`}
+                onClick={() => fetchHomeRecipes(meal.name)}
+              >
+                <img src={meal.imgSrc} alt={meal.name} />
+                <span>{meal.name}</span>
+              </div>
+            ))}
+          </div>
+          <Footer device='desktop' />
         </div>
       </aside>
       <main>

@@ -1,0 +1,13 @@
+@use 'variables' as *;
+
+.Search {
+  .Footer {
+    display: none;
+  }
+
+  @include tablet {
+    .Footer {
+      display: block;
+    }
+  }
+}

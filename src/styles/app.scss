@@ -34,12 +34,22 @@ section {
   main {
     width: 100%;
   }
+  aside {
+    position: relative;
+  }
   aside > div:first-child {
     position: sticky;
     top: $header-height;
-    max-height: calc(100vh - $header-height);
     overflow: auto;
     padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet {
+      min-height: calc(100vh - $header-height);
+    }
   }
 
   @include tablet {

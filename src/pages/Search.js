@@ -3,6 +3,8 @@ import Loading from '../components/Loading';
 import Recipes from '../components/Recipes';
 import RecipeContext from '../context/recipe';
 import SearchRecipesForm from '../components/SearchRecipesForm';
+import Footer from '../components/Footer';
+import '../styles/search.scss';
 
 export default function Search() {
   const { search } = useContext(RecipeContext);
@@ -17,7 +19,10 @@ export default function Search() {
   return (
     <section className='Search'>
       <aside>
-        <SearchRecipesForm />
+        <div>
+          <SearchRecipesForm />
+          <Footer device='desktop' />
+        </div>
       </aside>
       <main id='#search'>
         {loading ? (
