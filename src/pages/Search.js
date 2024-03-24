@@ -14,27 +14,28 @@ export default function Search() {
     searchNextRecipesUrl: nextRecipesUrl,
     setSearchNextRecipesUrl: setNextRecipesUrl,
     searchRecipesLoading: loading,
+    fetchSearchRecipes,
   } = search;
 
   return (
     <section className='Search'>
       <aside>
         <div>
-          <SearchRecipesForm />
+          <SearchRecipesForm fetchSearchRecipes={ fetchSearchRecipes } />
           <Footer device='desktop' />
         </div>
       </aside>
       <main id='#search'>
-        {loading ? (
+        { loading ? (
           <Loading />
         ) : (
           <Recipes
-            recipes={recipes}
-            setRecipes={setRecipes}
-            nextRecipesUrl={nextRecipesUrl}
-            setNextRecipesUrl={setNextRecipesUrl}
+            recipes={ recipes }
+            setRecipes={ setRecipes }
+            nextRecipesUrl={ nextRecipesUrl }
+            setNextRecipesUrl={ setNextRecipesUrl }
           />
-        )}
+        ) }
       </main>
     </section>
   );
