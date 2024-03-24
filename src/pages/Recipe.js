@@ -102,7 +102,7 @@ function Recipe() {
                   <div className='name'>
                     <span>{ingredient.food}</span>
                     <span>
-                      ({ingredient.quantity} {ingredient.measure}
+                      ({ingredient.quantity.toFixed(2)} {ingredient.measure}
                       {ingredient.quantity > 1 ? 's' : ''})
                     </span>
                     <small>{ingredient.foodCategory}</small>

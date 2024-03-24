@@ -1,6 +1,8 @@
 .SearchRecipesForm {
-  .form {
+  max-height: calc(70vh);
+  overflow: auto;
 
+  .form {
     input,
     select {
       width: 100%;
@@ -64,7 +66,6 @@
 
     .exclude-ingredients-form,
     .include-ingredients-form {
-
       .included-ingredients,
       .excluded-ingredients {
         display: flex;
