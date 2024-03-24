@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+.Error {
+  .error-container {
+    width: 100%;
+    @include flex-hv-center;
+    flex-direction: column;
+    min-height: calc(100vh - $header-height);
+    padding: 0 2rem;
+    text-align: center;
+
+    .not-found {
+      position: relative;
+
+      span {
+        font-size: 10rem;
+        font-weight: bold;
+        @include tablet {
+          font-size: 15rem;
+        }
+
+        img {
+          width: 105px;
+          @include tablet {
+            width: 185px;
+          }
+        }
+      }
+    }
+
+    a {
+      text-decoration: none;
+      margin-top: 2rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+      background-color: var(--logo-color);
+      color: var(--borer-color);
+      border-radius: 0.5rem;
+      transition: filter 0.4s ease-in-out;
+
+      &:hover {
+        filter: brightness(120%);
+      }
+    }
+  }
+}
