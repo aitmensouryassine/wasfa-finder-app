@@ -35,8 +35,8 @@ const cuisineTypeChoices = [
 const MIN = 1,
   MAX = 20;
 
-export default function SearchRecipesForm() {
-  const [ingredientsRange, setIngredientsRange] = useState([1, 1]);
+export default function SearchRecipesForm({ fetchSearchRecipes }) {
+  const [ingredientsRange, setIngredientsRange] = useState(['', '']);
   const [minIngredients, setMinIngredients] = useState('');
   const [maxIngredients, setMaxIngredients] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
@@ -99,7 +99,46 @@ export default function SearchRecipesForm() {
   };
 
   const handleSubmit = () => {
-    console.log('search');
+    const filters = [];
+
+    if (searchQuery || includeIngredients.length !== 0) {
+      const queryParts = [];
+
+      if (searchQuery) {
+        queryParts.push(searchQuery);
+      }
+      if (includeIngredients.length !== 0) {
+        queryParts.push(...includeIngredients);
+      }
+      filters.push(`q=${queryParts.join(', ')}`);
+    }
+
+    if (excludeIngredients.length !== 0) {
+      filters.push(...excludeIngredients.map(ingredient => `excluded=${ingredient}`))
+    }
+
+    if (minIngredients && maxIngredients) {
+      filters.push(`ingr=${minIngredients}-${maxIngredients}`);
+    } else if (minIngredients) {
+      filters.push(`ingr=${minIngredients}%2B`);
+    } else if (maxIngredients) {
+      filters.push(`ingr=${maxIngredients}`);
+    }
+
+    if (time) {
+      filters.push(`time=${time}`);
+    }
+
+    if (cuisineType) {
+      filters.push(`cuisineType=${cuisineType}`);
+    }
+
+    if (diet) {
+      filters.push(`diet=${diet}`)
+    }
+
+    console.log(filters.join('&'));
+    fetchSearchRecipes(filters.join('&'));
   };
 
   return (
@@ -224,7 +263,12 @@ export default function SearchRecipesForm() {
               <label htmlFor='time'>
                 Cooking Time <small>(minutes)</small>
               </label>
-              <input type='number' name='time' value={ time } onChange={ (evt) => setTime(parseInt(evt.target.value)) } />
+              <input
+                type='number'
+                name='time'
+                value={ time }
+                onChange={ (evt) => setTime(evt.target.value !== null ? evt.target.value : '') }
+              />
             </div>
 
             <div className='group'>
