@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/wasfa-finder-app/static/css/main.94ceec6c.css",
+    "main.js": "/wasfa-finder-app/static/js/main.4105e2d2.js",
+    "static/media/logo-dark.svg": "/wasfa-finder-app/static/media/logo-dark.3ce63588f355614a815a2d657f9fe3b6.svg",
+    "static/media/logo-light.svg": "/wasfa-finder-app/static/media/logo-light.4e91e04b8a088c5ebb58494e02096c97.svg",
+    "index.html": "/wasfa-finder-app/index.html",
+    "main.94ceec6c.css.map": "/wasfa-finder-app/static/css/main.94ceec6c.css.map",
+    "main.4105e2d2.js.map": "/wasfa-finder-app/static/js/main.4105e2d2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.94ceec6c.css",
+    "static/js/main.4105e2d2.js"
+  ]
+}
