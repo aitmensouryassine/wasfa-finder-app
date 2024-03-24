@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { mealType, mergeDuplicateRecipes } from '../utils';
+import { mergeDuplicateRecipes } from '../utils';
 
 export const api_key = '446aa5a2b7ad7f4594f12336c100a887';
 export const app_id = '3cec3aee';
