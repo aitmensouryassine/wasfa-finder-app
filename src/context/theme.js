@@ -3,18 +3,29 @@ import { createContext, useState, useEffect } from 'react';
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
+  const themeKey = 'theme';
   const [dark, setDark] = useState(true);
 
+  const saveThemeToLocalStorage = (dark) => {
+    localStorage.setItem(themeKey, dark ? 'dark' : 'light');
+  };
+
   useEffect(() => {
-    const isSystemThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (isSystemThemeDark) {
-      setDark(true);
+    const savedTheme = localStorage.getItem(themeKey) || '';
+
+    if (savedTheme) {
+      setDark(savedTheme === 'dark');
     } else {
-      setDark(false);
+      const isSystemThemeDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (isSystemThemeDark) {
+        setDark(true);
+      } else {
+        setDark(false);
+      }
     }
   }, []);
 
-  return <ThemeContext.Provider value={{ dark, setDark }}>{children}</ThemeContext.Provider>;
+  return <ThemeContext.Provider value={{ dark, setDark, saveThemeToLocalStorage }}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeContext;

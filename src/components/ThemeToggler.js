@@ -5,7 +5,7 @@ import '../styles/theme-toggler.scss';
 
 function ThemeToggler() {
   const [checked, setChecked] = useState(false);
-  const { dark, setDark } = useContext(ThemeContext);
+  const { dark, setDark, saveThemeToLocalStorage } = useContext(ThemeContext);
 
   useEffect(() => {
     setChecked(!dark);
@@ -13,7 +13,10 @@ function ThemeToggler() {
 
   const handleChange = () => {
     setChecked((prevChecked) => !prevChecked);
-    setDark((prevState) => !prevState);
+    setDark((prevState) => {
+      saveThemeToLocalStorage(!prevState);
+      return !prevState;
+    });
   };
 
   return (
