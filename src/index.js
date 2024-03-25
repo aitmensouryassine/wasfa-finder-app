@@ -6,6 +6,8 @@ import Error from './pages/Error';
 import Saved from './pages/Saved';
 import Search from './pages/Search';
 import Recipe from './pages/Recipe';
+import Terms from './pages/Terms';
+import Privacy from './pages/Privacy';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { RecipeProvider } from './context/recipe';
 import { ThemeProvider } from './context/theme';
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: '/recipe/:id',
         element: <Recipe />,
+      },
+      {
+        path: '/terms',
+        element: <Terms />,
+      },
+      {
+        path: '/privacy',
+        element: <Privacy />,
       },
     ],
   },
