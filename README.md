@@ -13,6 +13,44 @@ Whether users need quick recipes for busy nights or elaborate meals for special 
 
 * <b>WasfaFinder</b> is designed with responsiveness in mind, ensuring a seamless user experience across various devices and screen sizes. Whether accessed on desktops, laptops, tablets, or smartphones, the layout and elements of the application adapt dynamically to fit the viewport, providing optimal usability and readability.
 
+<div align="center">
+  <img src="screenshots/desktop.png" alt="view on desctop" />
+  <p><em>View representation of the WasfaFinder interface on desktop</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/tablette.jpg" alt="view on tablette" />
+  <p><em>View representation of the WasfaFinder interface on tablette</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/mobile.jpg" alt="view on mobile" />
+  <p><em>View representation of the WasfaFinder interface on mobile</em></p>
+</div>
+
+* <b>WasfaFinder</b> offers a customizable theme experience, allowing users to switch between dark and light modes effortlessly. With this feature, users can tailor the interface to their preferences and enhance readability based on their environment or personal preference.
+
+<div align="center">
+  <img src="screenshots/dark.png" alt="view in dark mode" />
+  <p><em>View representations of the WasfaFinder interface in dark mode</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/light.png" alt="view in light mode" />
+  <p><em>View representation of the WasfaFinder interface in light mode</em></p>
+</div>
+
+ * <b>WasfaFinder</b> provides an advanced search feature with various filters to streamline your recipe exploration. Tailor your search results by including or excluding specific ingredients, adjusting cooking time, selecting dietary preferences, cuisine types, and even filtering recipes based on the range of the number of ingredients. Whether you're looking for quick meals, dietary-specific options, or exploring diverse cuisines, our advanced search ensures you find the perfect recipe to suit your preferences. Experience effortless recipe discovery with our comprehensive search filters.
+
+<div align="center">
+  <img src="screenshots/general_search.png" alt="view general search" />
+  <p><em>View representation of the WasfaFinder general search interface</em></p>
+</div>
+
+<div align="center">
+  <img src="screenshots/advanced_search.png" alt="view advanced search" />
+  <p><em>View representation of the WasfaFinder advanced search interface</em></p>
+</div>
 
 ## Installation
 
