@@ -138,7 +138,7 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
     }
 
     await fetchSearchRecipes(filters.join('&'));
-    setAdvancedSearch(false);
+    if (window.innerWidth < 700) setAdvancedSearch(false);
   };
 
   return (
