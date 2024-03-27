@@ -21,6 +21,16 @@ html {
 .App-dark,
 .App-light {
   background-color: var(--main-bg-color);
+
+  .goto-top-btn {
+    display: none;
+    cursor: pointer;
+    color: var(--logo-color);
+    position: fixed;
+    font-size: 2rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 section {
