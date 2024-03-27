@@ -8,11 +8,11 @@ import Search from './pages/Search';
 import Recipe from './pages/Recipe';
 import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 import { RecipeProvider } from './context/recipe';
 import { ThemeProvider } from './context/theme';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <App />,
