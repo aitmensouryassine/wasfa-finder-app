@@ -39,7 +39,6 @@ export const getNextRecipes = async (nextUrl, setRecipes, setNextUrl, setLoading
 export const getRecipesByQuery = async (term) => {
   try {
     const { data } = await axios.get(`${baseUrl}?type=public${credentials}&${term}`);
-    console.log(data)
     return {
       recipes: data?.hits || [],
       nextRecipesUrl: data?._links?.next?.href || '',

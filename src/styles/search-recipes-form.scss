@@ -1,7 +1,12 @@
+@use 'variables' as *;
+
 .SearchRecipesForm {
-  max-height: calc(70vh);
   overflow: auto;
   padding: 0 0.5rem;
+
+  @include tablet {
+    max-height: calc(70vh);
+  }
 
   .form {
     input,
@@ -13,6 +18,7 @@
       border: none;
       border: 1px solid var(--border-color);
       padding: 0 0.5rem;
+      font-size: 16px;
     }
 
     input[type='number'] {

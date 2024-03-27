@@ -98,7 +98,7 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
     setExcludeIngredient('');
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const filters = [];
 
     if (searchQuery || includeIngredients.length !== 0) {
@@ -114,7 +114,7 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
     }
 
     if (excludeIngredients.length !== 0) {
-      filters.push(...excludeIngredients.map(ingredient => `excluded=${ingredient}`))
+      filters.push(...excludeIngredients.map((ingredient) => `excluded=${ingredient}`));
     }
 
     if (minIngredients && maxIngredients) {
@@ -134,11 +134,11 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
     }
 
     if (diet) {
-      filters.push(`diet=${diet}`)
+      filters.push(`diet=${diet}`);
     }
 
-    console.log(filters.join('&'));
-    fetchSearchRecipes(filters.join('&'));
+    await fetchSearchRecipes(filters.join('&'));
+    setAdvancedSearch(false);
   };
 
   return (
@@ -148,31 +148,31 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
       <div className='form'>
         <div className='group'>
           <label htmlFor='search-query'>General search</label>
-          <input name='search-query' type='text' value={ searchQuery } onChange={ (e) => setSearchQuery(e.target.value) } />
+          <input name='search-query' type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         </div>
 
         <div className='advanced-search-btn'>
           <span
-            onMouseEnter={ () => setAdvancedSearchHoverd(true) }
-            onMouseLeave={ () => setAdvancedSearchHoverd(false) }
-            onClick={ () => setAdvancedSearch((prevState) => !prevState) }
-            className={ advancedSearch ? 'rotate' : '' }
+            onMouseEnter={() => setAdvancedSearchHoverd(true)}
+            onMouseLeave={() => setAdvancedSearchHoverd(false)}
+            onClick={() => setAdvancedSearch((prevState) => !prevState)}
+            className={advancedSearch ? 'rotate' : ''}
           >
-            Advanced Search{ ' ' }
-            { advancedSearchHovered ? <i className='bi bi-caret-down-fill'></i> : <i className='bi bi-caret-down'></i> }
+            Advanced Search{' '}
+            {advancedSearchHovered ? <i className='bi bi-caret-down-fill'></i> : <i className='bi bi-caret-down'></i>}
           </span>
         </div>
-        <div className={ `advanced-search-container ${advancedSearch ? 'active' : ''}` }>
+        <div className={`advanced-search-container ${advancedSearch ? 'active' : ''}`}>
           <div className='advanced-search'>
-            <form onSubmit={ addIncludeIngredient } className='include-ingredients-form'>
+            <form onSubmit={addIncludeIngredient} className='include-ingredients-form'>
               <div className='group'>
                 <label htmlFor='inlude-ingredient'>Include ingredients</label>
                 <div className='inputs'>
                   <input
                     name='inlude-ingredient'
                     type='text'
-                    value={ includeIngredient }
-                    onChange={ (e) => setIncludeIngredient(e.target.value) }
+                    value={includeIngredient}
+                    onChange={(e) => setIncludeIngredient(e.target.value)}
                   />
                   <button>
                     <i className='bi bi-plus'></i>
@@ -180,28 +180,28 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
                 </div>
               </div>
               <div className='included-ingredients'>
-                { includeIngredients.map((ingr, idx) => (
+                {includeIngredients.map((ingr, idx) => (
                   <span
-                    key={ idx }
-                    onClick={ () =>
+                    key={idx}
+                    onClick={() =>
                       setIncludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
                     }
                   >
-                    { ingr }
+                    {ingr}
                   </span>
-                )) }
+                ))}
               </div>
             </form>
 
-            <form onSubmit={ addExcludeIngredient } className='exclude-ingredients-form'>
+            <form onSubmit={addExcludeIngredient} className='exclude-ingredients-form'>
               <div className='group'>
                 <label htmlFor='exlude-ingredient'>Exclude ingredients</label>
                 <div className='inputs'>
                   <input
                     name='exlude-ingredient'
                     type='text'
-                    value={ excludeIngredient }
-                    onChange={ (e) => setExcludeIngredient(e.target.value) }
+                    value={excludeIngredient}
+                    onChange={(e) => setExcludeIngredient(e.target.value)}
                   />
                   <button>
                     <i className='bi bi-plus'></i>
@@ -209,16 +209,16 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
                 </div>
               </div>
               <div className='excluded-ingredients'>
-                { excludeIngredients.map((ingr, idx) => (
+                {excludeIngredients.map((ingr, idx) => (
                   <span
-                    key={ idx }
-                    onClick={ () =>
+                    key={idx}
+                    onClick={() =>
                       setExcludeIngredients((prevState) => prevState.filter((ingredient) => ingredient !== ingr))
                     }
                   >
-                    { ingr }
+                    {ingr}
                   </span>
-                )) }
+                ))}
               </div>
             </form>
 
@@ -227,11 +227,11 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
               <RangeSlider
                 className='slider'
                 name='number-of-ingredients'
-                min={ MIN }
-                max={ MAX }
-                step={ 1 }
-                value={ ingredientsRange }
-                onInput={ handleRangeChange }
+                min={MIN}
+                max={MAX}
+                step={1}
+                value={ingredientsRange}
+                onInput={handleRangeChange}
               />
               <div className='min-max'>
                 <div className='min'>
@@ -239,10 +239,10 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
                   <input
                     type='number'
                     name='min'
-                    value={ minIngredients }
-                    onChange={ handleMinIngredient }
-                    min={ ingredientsRange[0] }
-                    max={ ingredientsRange[1] }
+                    value={minIngredients}
+                    onChange={handleMinIngredient}
+                    min={ingredientsRange[0]}
+                    max={ingredientsRange[1]}
                   />
                 </div>
                 <div className='max'>
@@ -250,10 +250,10 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
                   <input
                     type='number'
                     name='max'
-                    value={ maxIngredients }
-                    onChange={ handleMaxIngredient }
-                    min={ ingredientsRange[0] }
-                    max={ ingredientsRange[1] }
+                    value={maxIngredients}
+                    onChange={handleMaxIngredient}
+                    min={ingredientsRange[0]}
+                    max={ingredientsRange[1]}
                   />
                 </div>
               </div>
@@ -266,40 +266,40 @@ export default function SearchRecipesForm({ fetchSearchRecipes }) {
               <input
                 type='number'
                 name='time'
-                value={ time }
-                onChange={ (evt) => setTime(evt.target.value !== null ? evt.target.value : '') }
+                value={time}
+                onChange={(evt) => setTime(evt.target.value !== null ? evt.target.value : '')}
               />
             </div>
 
             <div className='group'>
               <label htmlFor='cuisine-type'>Cuisine Type</label>
-              <select name='cuisine-type' onChange={ (e) => setCuisineType(e.target.value) }>
+              <select name='cuisine-type' onChange={(e) => setCuisineType(e.target.value)}>
                 <option></option>
-                { cuisineTypeChoices.map(({ id, name }) => (
-                  <option key={ id } value={ name }>
-                    { name }
+                {cuisineTypeChoices.map(({ id, name }) => (
+                  <option key={id} value={name}>
+                    {name}
                   </option>
-                )) }
+                ))}
               </select>
             </div>
 
             <div className='group'>
               <label htmlFor='diet'>Diet</label>
-              <select name='diet' onChange={ (e) => setDiet(e.target.value) }>
+              <select name='diet' onChange={(e) => setDiet(e.target.value)}>
                 <option></option>
-                { dietChoices.map(({ id, name }) => (
-                  <option key={ id } value={ name }>
-                    { name }
+                {dietChoices.map(({ id, name }) => (
+                  <option key={id} value={name}>
+                    {name}
                   </option>
-                )) }
+                ))}
               </select>
             </div>
           </div>
         </div>
         <div className='submit'>
-          <a className='btn' onClick={ handleSubmit } href='#search'>
+          <div className='btn' onClick={handleSubmit}>
             Search
-          </a>
+          </div>
         </div>
       </div>
     </div>
