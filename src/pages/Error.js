@@ -17,7 +17,7 @@ function Error() {
           <div className='not-found'>
             <span>4</span>
             <span>
-              <img src={pizza} />
+              <img alt='404' src={pizza} />
             </span>
             <span>4</span>
           </div>

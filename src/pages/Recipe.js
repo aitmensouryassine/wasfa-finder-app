@@ -1,7 +1,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRecipeById } from '../api';
-import { secondsToHoursMinutes } from '../utils';
+import { capitalize, secondsToHoursMinutes } from '../utils';
 import '../styles/recipe.scss';
 import { Thumbnail } from '../components/RecipeCard';
 import Loading from '../components/Loading';
@@ -100,7 +100,7 @@ function Recipe() {
                     <Thumbnail src={ingredient.image} alt={ingredient.food} />
                   </div>
                   <div className='name'>
-                    <span>{ingredient.food}</span>
+                    <span>{capitalize(ingredient.food)}</span>
                     <span>
                       ({ingredient.quantity.toFixed(2)} {ingredient.measure}
                       {ingredient.quantity > 1 ? 's' : ''})

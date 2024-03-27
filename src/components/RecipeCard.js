@@ -1,6 +1,6 @@
 import '../styles/recipe-card.scss';
 import { Link } from 'react-router-dom';
-import { getRecipeId } from '../utils';
+import { capitalize, getRecipeId } from '../utils';
 import { useEffect, useState, useContext } from 'react';
 import RecipeContext from '../context/recipe';
 
@@ -53,7 +53,7 @@ function RecipeCard({ recipe }) {
         <Thumbnail alt={recipe.label} src={recipe.image} />
         <div className='tags'>
           <div className='cal'>{Math.round(recipe.calories)} Cal</div>
-          <div className='cuisine-type'>{recipe.cuisineType[0]}</div>
+          <div className='cuisine-type'>{capitalize(recipe.cuisineType[0])}</div>
         </div>
       </div>
       <div className='label'>
