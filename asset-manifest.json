@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/wasfa-finder-app/static/css/main.c6c82019.css",
-    "main.js": "/wasfa-finder-app/static/js/main.f57f4a28.js",
+    "main.css": "/wasfa-finder-app/static/css/main.b802d93f.css",
+    "main.js": "/wasfa-finder-app/static/js/main.ff87757f.js",
     "static/media/pizza.png": "/wasfa-finder-app/static/media/pizza.19859826a42569a17ed4.png",
     "static/media/logo-dark.svg": "/wasfa-finder-app/static/media/logo-dark.3ce63588f355614a815a2d657f9fe3b6.svg",
     "static/media/logo-light.svg": "/wasfa-finder-app/static/media/logo-light.4e91e04b8a088c5ebb58494e02096c97.svg",
     "index.html": "/wasfa-finder-app/index.html",
-    "main.c6c82019.css.map": "/wasfa-finder-app/static/css/main.c6c82019.css.map",
-    "main.f57f4a28.js.map": "/wasfa-finder-app/static/js/main.f57f4a28.js.map"
+    "main.b802d93f.css.map": "/wasfa-finder-app/static/css/main.b802d93f.css.map",
+    "main.ff87757f.js.map": "/wasfa-finder-app/static/js/main.ff87757f.js.map"
   },
   "entrypoints": [
-    "static/css/main.c6c82019.css",
-    "static/js/main.f57f4a28.js"
+    "static/css/main.b802d93f.css",
+    "static/js/main.ff87757f.js"
   ]
 }
