@@ -52,9 +52,25 @@ Whether users need quick recipes for busy nights or elaborate meals for special 
   <p><em>View representation of the WasfaFinder advanced search interface</em></p>
 </div>
 
+* WasfaFinder intelligently suggests dishes based on the user current mealtime. Seamlessly synchronized with the user local time, WafsaFinder presents a curated menu of mealtime options, ensuring that every recipe recommendation aligns perfectly with your schedule. 
+
+<div align="center">
+  <img src="screenshots/mealtime_menu.png" alt="mealtime menu" />
+  <p><em>View representation of the mealtime menu in the Home page</em></p>
+</div>
+
+* Saving and discovering the user's favorite recipes is easier with WafsaFinder. With just a simple tap, user can mark recipes as favorites, creating a personalized collection of go-to dishes. The Saved Recipes page serves as a digital recipe box, providing quick and easy access to all the saved recipes.
+
+
+<div align="center">
+  <img src="screenshots/saved_recipes.png" alt="Saved recipes page" />
+  <p><em>View representation of the saved recipes page</em></p>
+</div>
+
+
 ## Installation
 
-To run Tembea-KEwasfaFinder locally, follow these steps:
+To run wasfaFinder locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/aitmensouryassine/wasfa-finder-app.git`
 2. Install the required dependencies: `npm install`
