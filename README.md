@@ -88,7 +88,10 @@ To run wasfaFinder locally, follow these steps:
 ## Demonstration
 
 🍱 Experience the full potential of WafsaFinder by watching our demonstration video
-<a href="https://www.youtube.com/watch?v=zcTwG-Gt-_I" target="blank">
+
+[![WasfaFinder demo](https://img.youtube.com/vi/zcTwG-Gt-_I/0.jpg)](https://www.youtube.com/watch?v=zcTwG-Gt-_I)
+
+🍱 We invite you also to experience our application firsthand by accessing the link to our deployed app : [wasfa-finder-app](https://aitmensouryassine.github.io/wasfa-finder-app/). Explore the world of hassle-free meal planning with WafsaFinder 😋
 
 # Authors :
 
