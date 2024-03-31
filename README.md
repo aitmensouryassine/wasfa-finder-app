@@ -80,6 +80,7 @@ To run wasfaFinder locally, follow these steps:
 ## Technologies
 
 ### Front-End
+
 <img src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" title="React" alt="React" width="40" height="40"/>&nbsp; **React.js**: A JavaScript library for building user interfaces.
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/reactrouter/reactrouter-original.svg" title="React-Router" alt="React-Router" width="40" height="40"/>&nbsp; **react-router-dom**: Package that provides routing capabilities to React applications. It allows us to create single-page applications with multiple views, each represented by its own component.
@@ -88,6 +89,12 @@ To run wasfaFinder locally, follow these steps:
 
 <img src="https://github.com/devicons/devicon/blob/master/icons/axios/axios-plain-wordmark.svg" title="Axios" alt="Axios" width="40" height="40"/>&nbsp; **Axios**: Popular JavaScript library used for making HTTP requests from web browsers and Node.js applications. It provides a simple and intuitive API for sending asynchronous HTTP requests to REST endpoints, fetching data from servers, and handling responses. Axios supports features like request and response interceptors, promise-based API, automatic JSON data transformation, cancellation of requests, and error handling.
 
+### API
+<div align="center">
+  <img src="./screenshots/Edamam.jpg" width="350"/>
+</div>
+
+We chose "Edamam Recipe Search API" for its robust features and extensive database of recipes. It offers a wide range of recipes to suit various tastes and dietary preferences. Additionally, it provides accurate and relevant results, making it easier for users to find recipes that match their needs.
 
 
 ## Demonstration
