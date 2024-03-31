@@ -40,7 +40,7 @@ function Header() {
           <i className='bi bi-bookmark-fill'></i>
           <span>Saved</span>
         </NavLink>
-        <Footer device='mobile' />
+        <Footer device='mobile' handleHide={handleHide} />
       </nav>
       <ThemeToggler />
     </header>

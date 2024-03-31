@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { useRouteError } from 'react-router-dom';
+import { useRouteError, Link } from 'react-router-dom';
 import ThemeContext from '../context/theme';
 import Header from '../components/Header';
 import pizza from '../images/pizza.png';
@@ -22,7 +22,7 @@ function Error() {
             <span>4</span>
           </div>
           <h2>Sorry! The recipe you're looking for isn't available 🥲</h2>
-          <a href='/'>Go To Home Page</a>
+          <Link to='/'>Go To Home Page</Link>
         </div>
       </section>
     </div>

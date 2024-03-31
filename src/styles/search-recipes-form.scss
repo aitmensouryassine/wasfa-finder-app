@@ -177,9 +177,7 @@
       }
 
       span {
-        &:hover {
-          cursor: pointer;
-        }
+        cursor: pointer;
 
         i::before {
           transform: rotate(0deg);
